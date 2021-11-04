@@ -32,4 +32,20 @@ app.use(csurf({ // creates _csrf cookie & req.csrfToken() method
 const routes = require('./routes');
 app.use(routes);
 
+// catch unhandled requests
+app.use((req, res, next) => {
+  const err = new Error("The app doesn't know how to handle this request.");
+  err.title = 'Resource not found.';
+  err.errors = ['Resource not found.'];
+  err.status = 404;
+  next(err);
+});
+
+// return errors to the client
+app.use(function (err, req, res, next) {
+  // what if there are serveral errors?
+  console.error(err.stack);
+  res.status(500).json({ err, stack: err.stack });
+});
+
 module.exports = app;
