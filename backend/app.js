@@ -9,6 +9,9 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
 const { environment } = require('./config');
+const routes = require('./routes');
+const { ValidationError } = require('sequelize');
+
 const isProduction = environment === 'production';
 
 // instantiate app
@@ -29,7 +32,6 @@ app.use(csurf({ // creates _csrf cookie & req.csrfToken() method
 }));
 
 // import and register routes
-const routes = require('./routes');
 app.use(routes);
 
 // catch unhandled requests
@@ -41,8 +43,16 @@ app.use((req, res, next) => {
   next(err);
 });
 
+// catch sequelize errors
+app.use((err, req, res, next) => {
+  if (err instanceof ValidationError) {
+    err.errors = err.errors.map(e => e.message);
+    err.title = 'Sequelize Validation Error.';
+  };
+  next(err);
+});
 // return errors to the client
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // what if there are serveral errors?
   console.error(err.stack);
   res.status(500).json({ err, stack: err.stack });
