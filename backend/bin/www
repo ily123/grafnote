@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+/**
+  * Module that checks db connection and starts the app.
+  */
+const config = require('../config');
+const app = require('../app');
+const db = require('../db/models');
+
+const { port, db: { username, database } } = config;
+
+const start = async () => {
+  console.log(`Connecting to ${database} as ${username}`);
+  try {
+    // Check db connection before starting app
+    await db.sequelize.authenticate();
+    console.log('Connection success!');
+    app.listen(port, () => console.log(`Starting app on port ${port}`));
+  } catch (err) {
+    console.log('Connection failure. See error below.');
+    console.error(err);
+  }
+};
+
+start();

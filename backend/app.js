@@ -13,9 +13,6 @@ const isProduction = environment === 'production';
 
 // instantiate app
 const app = express();
-// import and register routes
-const routes = require('./routes');
-app.use(routes);
 
 // apply moddleware
 app.use(morgan('dev')); // logging
@@ -30,5 +27,9 @@ app.use(csurf({ // creates _csrf cookie & req.csrfToken() method
     httpOnly: true
   }
 }));
+
+// import and register routes
+const routes = require('./routes');
+app.use(routes);
 
 module.exports = app;
