@@ -1,5 +1,6 @@
 'use strict';
-const { Validator } = require('sequelize');
+const bcrypt = require('bcryptjs');
+const { Validator, Op } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -50,5 +51,32 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
 
+  User.prototype.toSafeObject = function () {
+    const { id, username, email } = this;
+    return { id, username, email };
+  };
+
+  User.prototype.validatePassword = function (password) {
+    const hashedPassword = this.hashedPassword.toString();
+    return bcrypt.compareSync(password, hashedPassword);
+  };
+
+  User.login = async function ({ credential, password }) {
+    const { email, username } = credential;
+    const user = await User.scope('loginUser').findOne({
+      where: {
+        [Op.or]: { username, email }
+      }
+    });
+    if (user && user.validatePassword(password)) {
+      return await User.scope('currentUser').findByPk(user.id);
+    }
+  };
+
+  User.signup = async function ({ username, email, password }) {
+    const hashedPassword = bcrypt.hashSync(password);
+    const user = await User.create({ username, email, hashedPassword });
+    return await User.scope('currentUser').findByPk(user.id);
+  };
   return User;
 };
