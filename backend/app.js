@@ -1,3 +1,6 @@
+/**
+  * Main app module that sets up middleware and routing.
+  */
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -10,6 +13,9 @@ const isProduction = environment === 'production';
 
 // instantiate app
 const app = express();
+// import and register routes
+const routes = require('./routes');
+app.use(routes);
 
 // apply moddleware
 app.use(morgan('dev')); // logging
@@ -24,3 +30,5 @@ app.use(csurf({ // creates _csrf cookie & req.csrfToken() method
     httpOnly: true
   }
 }));
+
+module.exports = app;
