@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "crypto": "^1.0.1",
     "dotenv-cli": "^4.1.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
