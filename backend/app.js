@@ -51,11 +51,18 @@ app.use((err, req, res, next) => {
   };
   next(err);
 });
+
 // return errors to the client
 app.use((err, req, res, next) => {
-  // what if there are serveral errors?
-  console.error(err.stack);
-  res.status(500).json({ err, stack: err.stack });
+  console.error(err);
+  res.status(err.status || 500);
+  const { title, message, errors, stack } = err;
+  res.json({
+    title,
+    message,
+    errors,
+    stack: isProduction ? 'hidden in production' : stack
+  });
 });
 
 module.exports = app;
