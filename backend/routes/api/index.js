@@ -6,11 +6,29 @@ const asyncHandler = require('express-async-handler');
 const { User } = require('../../db/models');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
 
+router.post('/login', asyncHandler(async (req, res, next) => {
+  const { credential, password } = req.body;
+  console.log(credential);
+  const user = await User.login({ credential, password });
+  if (!user) {
+    const err = new Error('Login failed');
+    err.status = 401;
+    err.title = 'Login failed';
+    err.errors = ['Provided credentials are invalid.'];
+    return next(err);
+  }
+
+  await setTokenCookie(res, user);
+  return res.json({ user });
+}));
+
+// TODO -- these need to be made into actual unit tests:
+
 router.get('/test', (req, res) => {
   res.json({ message: 'this is a test' });
 });
 
-router.get('/test-auth-token', asyncHandler(async (req, res) => {
+router.get('/test-set-token', asyncHandler(async (req, res) => {
   const user = await User.findOne({
     where: { username: 'Demo-lition' }
   });
