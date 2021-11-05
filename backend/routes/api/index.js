@@ -26,6 +26,13 @@ router.delete('/logout', (req, res) => {
   res.clearCookie('token');
   return res.json({ message: 'success' });
 });
+
+router.post('/signup', asyncHandler(async (req, res) => {
+  const { email, password, username } = req.body;
+  const user = await User.signup({ email, username, password });
+  await setTokenCookie(res, user);
+  return res.json({ user });
+}));
 // TODO -- these need to be made into actual unit tests:
 
 router.get('/test', (req, res) => {
