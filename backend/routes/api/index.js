@@ -33,6 +33,12 @@ router.post('/signup', asyncHandler(async (req, res) => {
   await setTokenCookie(res, user);
   return res.json({ user });
 }));
+
+router.get('/session', restoreUser, (req, res) => {
+  const { user } = req;
+  if (!user) return res.json({});
+  return res.json({ user: user.toSafeObject() });
+});
 // TODO -- these need to be made into actual unit tests:
 
 router.get('/test', (req, res) => {
