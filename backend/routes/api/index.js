@@ -22,6 +22,10 @@ router.post('/login', asyncHandler(async (req, res, next) => {
   return res.json({ user });
 }));
 
+router.delete('/logout', (req, res) => {
+  res.clearCookie('token');
+  return res.json({ message: 'success' });
+});
 // TODO -- these need to be made into actual unit tests:
 
 router.get('/test', (req, res) => {
