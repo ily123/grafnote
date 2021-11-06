@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store/session';
 
 const LoginFormPage = () => {
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // do nothing
-    console.log('this should trigger after first render');
+    // maybe put validators here TODO
   }, []);
 
   const submit = (event) => {
     event.preventDefault();
-    console.log('This the log-in form submission.');
+    dispatch(loginUser(credential, password));
   };
+
   return (
     <div className="user-login-form">
       <form onSubmit={submit}>
