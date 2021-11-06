@@ -9,7 +9,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 
 const store = configureStore();
-
+console.log("THIS IS THE FRONT END ENV", process.env.NODE_ENV);
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
   window.csrfFetch = csrfFetch;
