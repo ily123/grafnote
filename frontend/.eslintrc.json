@@ -20,6 +20,8 @@
     "rules": {
         "semi": [2, "always"],
         "indent": ["error", 2, {"SwitchCase": 1}],
-        "max-len": ["error", {"code": 88}]
+        "max-len": ["error", {"code": 88}],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 }
