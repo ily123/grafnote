@@ -1,3 +1,4 @@
+import './LoginForm.css';
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +19,6 @@ const LoginFormPage = () => {
 
   const submit = async (event) => {
     event.preventDefault();
-    console.log('got to this line!!');
     try {
       await dispatch(loginUser(credential, password));
     } catch (response) { // the error object is the response
