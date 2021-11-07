@@ -3,6 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
+import Navigation from './components/Navigation';
 import { restoreUser } from './store/session';
 
 function App () {
@@ -15,6 +16,7 @@ function App () {
 
   return (
     <div>
+      <Navigation />
       <h1>Hello from App</h1>
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/login'>Login</NavLink>
