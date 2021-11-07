@@ -17,14 +17,20 @@ export const destroyUser = user => {
 };
 
 export const loginUser = (credential, password) => async dispatch => {
-  console.log('hello from loginUser thunk');
-  console.log(credential);
-  console.log(password);
   const options = {
     method: 'POST',
     body: JSON.stringify({ credential, password })
   };
   const response = await csrfFetch('/api/login', options);
+  if (response.ok) {
+    const { user } = await response.json();
+    dispatch(loadUser(user));
+  }
+  return response;
+};
+
+export const restoreUser = () => async dispatch => {
+  const response = await csrfFetch('/api/session');
   if (response.ok) {
     const { user } = await response.json();
     dispatch(loadUser(user));
