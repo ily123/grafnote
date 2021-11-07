@@ -62,7 +62,7 @@ export const sessionReducer = (state = initUser, action) => {
       else return action.user;
     }
     case DESTROY_USER: {
-      return {};
+      return null;
     }
     default: {
       return state;
