@@ -18,12 +18,6 @@ function SignupFormPage () {
     passwordMatch: false
   });
 
-  if (sessionUser) {
-    return (
-      <Redirect to="/" />
-    );
-  }
-
   useEffect(() => {
     setValid(state => ({ ...state, email: email.includes('@') }));
     setValid(state => ({ ...state, username: username.length >= 4 }));
@@ -34,10 +28,17 @@ function SignupFormPage () {
     }));
   }, [email, username, password, confirmPassword]);
 
+  if (sessionUser) {
+    return (
+      <Redirect to="/" />
+    );
+  }
+
   const submit = async (event) => {
     event.preventDefault();
     try {
       await dispatch(signupUser(email, username, password));
+      console.warn('thunk was successful');
     } catch (response) {
       const { errors } = await response.json();
       console.error(errors);

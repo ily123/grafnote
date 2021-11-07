@@ -30,6 +30,7 @@ export const loginUser = (credential, password) => async dispatch => {
 };
 
 export const restoreUser = () => async dispatch => {
+  console.warn('making restore user request');
   const response = await csrfFetch('/api/session');
   if (response.ok) {
     const { user } = await response.json();
@@ -44,7 +45,7 @@ export const signupUser = (email, username, password) => async dispatch => {
     body: JSON.stringify({ email, username, password })
   };
   const response = await csrfFetch('api/signup', options);
-  console.error(response);
+  console.log(response);
   if (response.ok) {
     const { user } = await response.json();
     console.log(user);
