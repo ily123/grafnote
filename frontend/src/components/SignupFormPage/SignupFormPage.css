@@ -1,0 +1,11 @@
+.user-signup-form {
+  border: 1px red solid;
+}
+
+.user-signup-form .input.valid {
+  background-color: lightgreen;
+}
+
+.user-signup-form .input.invalid {
+  background-color: pink;
+}

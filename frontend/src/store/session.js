@@ -38,6 +38,21 @@ export const restoreUser = () => async dispatch => {
   return response;
 };
 
+export const signupUser = (email, username, password) => async dispatch => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ email, username, password })
+  };
+  const response = await csrfFetch('api/signup', options);
+  console.error(response);
+  if (response.ok) {
+    const { user } = await response.json();
+    console.log(user);
+    dispatch(loadUser(user));
+  }
+  return response;
+};
+
 const initUser = null;
 export const sessionReducer = (state = initUser, action) => {
   switch (action.type) {
