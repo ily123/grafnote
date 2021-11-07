@@ -9,6 +9,9 @@ function App () {
         <Route path="/login">
           <LoginFormPage />
         </Route>
+        <Route path="/login">
+          This is the home page.
+        </Route>
       </Switch>
     </div>
   );

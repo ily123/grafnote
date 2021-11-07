@@ -1,22 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../store/session';
 
 const LoginFormPage = () => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-  const dispatch = useDispatch();
-  const history = useHistory();
-  console.log(sessionUser);
 
-  useEffect(() => {
-    // maybe put front-end validators here TODO
-  }, []);
-
-  if (sessionUser) history.push('/');
+  if (sessionUser) {
+    return (
+      <Redirect to="/" />
+    );
+  }
 
   const submit = async (event) => {
     event.preventDefault();
@@ -32,18 +30,24 @@ const LoginFormPage = () => {
   return (
     <div className="user-login-form">
       <form onSubmit={submit}>
-        <input
-          type="text"
-          placeholder="Enter e-mail or username"
-          required
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)} />
-        <input
-          type="password"
-          placeholder="Enter password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} />
+        <label>
+          Username or email
+          <input
+            type="text"
+            placeholder="Enter e-mail or username"
+            required
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)} />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            placeholder="Enter password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} />
+        </label>
         <button type="submit">Log In</button>
       </form>
       <ul className="user-login-errors">
