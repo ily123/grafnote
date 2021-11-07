@@ -1,7 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 
 function App () {
+  const user = useSelector(state => state.session);
   return (
     <div>
       <h1>Hello from App</h1>
@@ -13,6 +15,9 @@ function App () {
           This is the home page.
         </Route>
       </Switch>
+      <footer>
+        The user is {user?.username}
+      </footer>
     </div>
   );
 }
