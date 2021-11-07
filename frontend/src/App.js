@@ -20,6 +20,7 @@ function App () {
       <NavLink to='/login'>Login</NavLink>
       <NavLink to='/signup'>Signup</NavLink>
       <NavLink to='/test'>Test</NavLink>
+      <NavLink to='/logout'>Logout</NavLink>
       <Switch>
         <Route exact path='/'>
           This is the home page.
