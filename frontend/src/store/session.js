@@ -32,7 +32,7 @@ export const loginUser = (credential, password) => async dispatch => {
   return response;
 };
 
-const initUser = {};
+const initUser = null;
 export const sessionReducer = (state = initUser, action) => {
   switch (action.type) {
     case LOAD_USER: {
