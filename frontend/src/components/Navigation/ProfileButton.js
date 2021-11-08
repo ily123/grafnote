@@ -5,16 +5,16 @@ import { logoutUser } from '../../store/session';
 
 export default function ProfileButton ({ user }) {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  console.log(showMenu);
-  useEffect(() => {
-    // do nothing for now
-    setShowMenu(false);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setShowMenu(state => !state);
-  };
+  const openMenu = () => setMenuOpen(true);
+  const hideMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener('click', hideMenu);
+      return () => document.removeEventListener('click', hideMenu);
+    }
+  }, [menuOpen]);
 
   const menu =
     <ul>
@@ -25,8 +25,8 @@ export default function ProfileButton ({ user }) {
 
   return (
     <div>
-      <button onClick={toggleMenu}>Profile</button>
-      {showMenu && menu}
+      <button onClick={openMenu}>Profile</button>
+      {menuOpen && menu}
     </div>
   );
 }
