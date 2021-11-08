@@ -103,3 +103,32 @@
 .endorsement-text b {
   color: #DCDDDE;
 }
+
+.features-container {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-container h2 {
+  font-size: 60px;
+  color: #DCDDDE;
+  margin: 0;
+  padding-bottom: 30px;
+}
+
+.features-container ul {
+  list-style-type: none;
+}
+.features-container li {
+  color: #999999;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.features-container li span {
+  font-weight: bold;
+  color: #DCDDDE;
+}

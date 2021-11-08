@@ -47,8 +47,15 @@ export default function LandingPage () {
       <div className='endorsement-container'>
         {(endorsements.map((data, index) => <Endorsement key={index} content={data}/>))}
       </div>
-      <div className='features=container'>
+      <div className='features-container'>
         <h2>Core Features</h2>
+        <ul>
+          <li>Text entry is <span>Markdown</span> by default, with live preview</li>
+          <li><span>Intuitive</span> folder structure and browser</li>
+          <li>All notes can be connected to create a <span>personal network of knowledge</span></li>
+          <li><span>Graph view</span> of note connections to map out your notes</li>
+          <li>Easy export of all contents as <span>zip-archive of .md files</span></li>
+        </ul>
       </div>
     </div>
   );
