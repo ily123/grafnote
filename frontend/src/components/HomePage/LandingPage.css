@@ -43,7 +43,7 @@
   text-decoration: none;
   border-radius: 5px;
   height: 65px;
-  width: clamp(200px, 30%, 300px);
+  width: clamp(250px, 38%, 350px);
 
 
   display: flex;
