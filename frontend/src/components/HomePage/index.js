@@ -1,4 +1,5 @@
 import './LandingPage.css';
+import { NavLink } from 'react-router-dom';
 
 export default function LandingPage () {
   return (
@@ -10,6 +11,7 @@ export default function LandingPage () {
              with <b>markdown support</b> and graph navigation.
           </p>
         </div>
+        <NavLink className='hero-demo-login' to='/test'><p>Login as Demo User</p><p>No sign up requried</p></NavLink>
         <div className='hero-image'></div>
       </div>
     </div>

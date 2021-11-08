@@ -2,29 +2,68 @@
   font-family: Inter, sans-serif;
 }
 
-.landing-page h1 {
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px red solid;
+}
+
+.hero-text h1 {
   font-size: 50px;
   color: #f8f8f8;
 }
 
-.landing-page p {
+.hero-text p {
   font-size: 24px;
   color: #999;
 }
 
 .hero-text {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  /* svg background image credit: https://www.svgbackgrounds.com/ */
+  background-image: url('./endless-constellation.svg');
+  border: 1px green solid;
 }
 
 .hero-text p b {
-  color: #9785E5;
   color: #6C56CC;
 }
 
-.hero-text {
-  /* svg background image credit: https://www.svgbackgrounds.com/ */
-  background-image: url('./endless-constellation.svg');
+.hero-demo-login {
+  border: 1px red solid;
+}
+
+.hero-demo-login {
+  background-color: #483699;
+  text-decoration: none;
+  border-radius: 5px;
+  height: 65px;
+  width: clamp(200px, 30%, 300px);
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-demo-login > p:first-child {
+  font-size: 18px;
+  color: #DCDDDE;
+  margin: 0;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+
+.hero-demo-login > p:nth-child(2) {
+  font-size: 14px;
+  color: #999999;
+  margin: 0;
+  padding-bottom: 10px;
 }
