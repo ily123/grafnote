@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
+import LandingPage from './components/HomePage';
 import { restoreUser } from './store/session';
 
 function App () {
@@ -17,10 +18,9 @@ function App () {
   return (
     <div>
       <Navigation />
-      <h1>Hello from App</h1>
       <Switch>
         <Route exact path='/'>
-          This is the home page.
+          <LandingPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />
@@ -34,7 +34,7 @@ function App () {
         </Route>
       </Switch>
       <footer>
-        The user is {user?.username}
+        The user is {user ? user.username : 'not logged in'}
       </footer>
     </div>
   );
