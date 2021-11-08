@@ -1,6 +1,35 @@
 import './LandingPage.css';
 import { NavLink } from 'react-router-dom';
 
+const endorsements = [
+  {
+    text: <div>The password fields need to be type <b>password</b>.</div>,
+    person: 'Peter Mai',
+    title: 'AppAcademy Instructor'
+  },
+  {
+    text: <div>I like the <b>dynamic validation</b> on the sign-up form.</div>,
+    person: 'Jordyn Sechrist',
+    title: 'AppAcademy Instructor'
+  },
+  {
+    text: <div>By far, the <b>best note-taking app</b> I have ever developed.</div>,
+    person: 'Ilya Novikov',
+    title: 'Author of Grafnote'
+  }
+];
+
+function Endorsement ({ content }) {
+  const { text, person, title } = content;
+  return (
+    <div className="endorsement">
+      <div className="endorsement-text">{text}</div>
+      <div className="endorsement-person">{person}</div>
+      <div className="endorsement-title">{title}</div>
+    </div>
+  );
+}
+
 export default function LandingPage () {
   return (
     <div className='landing-page'>
@@ -12,7 +41,14 @@ export default function LandingPage () {
           </p>
         </div>
         <NavLink className='hero-demo-login' to='/test'><p>Login as Demo User</p><p>No sign up requried</p></NavLink>
-        <div className='hero-image'></div>
+        <div className='hero-image'>
+        </div>
+      </div>
+      <div className='endorsement-container'>
+        {(endorsements.map((data, index) => <Endorsement key={index} content={data}/>))}
+      </div>
+      <div className='features=container'>
+        <h2>Core Features</h2>
       </div>
     </div>
   );

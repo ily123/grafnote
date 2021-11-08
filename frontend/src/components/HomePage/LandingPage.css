@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px red solid;
+  padding-bottom: 70px;
 }
 
 .hero-text h1 {
@@ -27,15 +27,10 @@
   text-align: center;
   /* svg background image credit: https://www.svgbackgrounds.com/ */
   background-image: url('./endless-constellation.svg');
-  border: 1px green solid;
 }
 
 .hero-text p b {
   color: #6C56CC;
-}
-
-.hero-demo-login {
-  border: 1px red solid;
 }
 
 .hero-demo-login {
@@ -51,6 +46,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  margin-top: 30px;
 }
 
 .hero-demo-login > p:first-child {
@@ -66,4 +63,43 @@
   color: #999999;
   margin: 0;
   padding-bottom: 10px;
+}
+
+
+.endorsement-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  column-gap: 50px;
+}
+
+.endorsement {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: space-between;
+
+  font-size: 18px;
+  color: #999999;
+}
+
+.endorsement-person {
+  padding-top: 15px;
+  color: #DCDDDE;
+  font-weight: bold;
+}
+
+.endorsement-title {
+  font-size: 16px;
+}
+
+.endorsement-text {
+  line-height: 25px;
+}
+
+.endorsement-text b {
+  color: #DCDDDE;
 }
