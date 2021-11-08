@@ -5,10 +5,12 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import LandingPage from './components/HomePage';
+import Footer from './components/Footer';
 import { restoreUser } from './store/session';
 
 function App () {
   const user = useSelector(state => state.session);
+  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,9 +35,7 @@ function App () {
           This is a test page.
         </Route>
       </Switch>
-      <footer>
-        The user is {user ? user.username : 'not logged in'}
-      </footer>
+      <Footer />
     </div>
   );
 }
