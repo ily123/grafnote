@@ -1,0 +1,15 @@
+.note-container {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+.note-sidebar-container {
+  background-color: yellow;
+  width: 30%;
+}
+
+.note-editor-container {
+  background-color: pink;
+  width: 70%;
+}
