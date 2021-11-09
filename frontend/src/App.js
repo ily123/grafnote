@@ -4,10 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
+import LandingPage from './components/HomePage';
+import Footer from './components/Footer';
 import { restoreUser } from './store/session';
 
 function App () {
   const user = useSelector(state => state.session);
+  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,10 +20,9 @@ function App () {
   return (
     <div>
       <Navigation />
-      <h1>Hello from App</h1>
       <Switch>
         <Route exact path='/'>
-          This is the home page.
+          <LandingPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />
@@ -33,9 +35,7 @@ function App () {
           This is a test page.
         </Route>
       </Switch>
-      <footer>
-        The user is {user?.username}
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,134 @@
+.landing-page {
+  font-family: Inter, sans-serif;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 70px;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  color: #f8f8f8;
+}
+
+.hero-text p {
+  font-size: 24px;
+  color: #999;
+}
+
+.hero-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* svg background image credit: https://www.svgbackgrounds.com/ */
+  background-image: url('./endless-constellation.svg');
+}
+
+.hero-text p b {
+  color: #6C56CC;
+}
+
+.hero-demo-login {
+  background-color: #483699;
+  text-decoration: none;
+  border-radius: 5px;
+  height: 65px;
+  width: clamp(250px, 38%, 350px);
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin-top: 30px;
+}
+
+.hero-demo-login > p:first-child {
+  font-size: 18px;
+  color: #DCDDDE;
+  margin: 0;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+
+.hero-demo-login > p:nth-child(2) {
+  font-size: 14px;
+  color: #999999;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+
+.endorsement-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 50px;
+  column-gap: 50px;
+}
+
+.endorsement {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: space-between;
+
+  font-size: 18px;
+  color: #999999;
+}
+
+.endorsement-person {
+  padding-top: 15px;
+  color: #DCDDDE;
+  font-weight: bold;
+}
+
+.endorsement-title {
+  font-size: 16px;
+}
+
+.endorsement-text {
+  line-height: 25px;
+}
+
+.endorsement-text b {
+  color: #DCDDDE;
+}
+
+.features-container {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-container h2 {
+  font-size: 60px;
+  color: #DCDDDE;
+  margin: 0;
+  padding-bottom: 30px;
+}
+
+.features-container ul {
+  list-style-type: none;
+}
+.features-container li {
+  color: #999999;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.features-container li span {
+  font-weight: bold;
+  color: #DCDDDE;
+}
