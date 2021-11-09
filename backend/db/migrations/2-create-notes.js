@@ -13,11 +13,16 @@ module.exports = {
         refences: { model: 'Users' },
         type: Sequelize.INTEGER
       },
+      folderId: {
+        allowNull: false,
+        defaultValue: 0,
+        type: Sequelize.INTEGER
+      },
       title: {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
-      text: {
+      content: {
         type: Sequelize.TEXT
       },
       createAt: {
