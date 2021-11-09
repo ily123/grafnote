@@ -33,13 +33,17 @@
   color: #6C56CC;
 }
 
+.hero-demo-login:hover {
+  background-color: #4e3c9e;
+}
+
 .hero-demo-login {
   background-color: #483699;
+  transition: color 500ms;
   text-decoration: none;
   border-radius: 5px;
   height: 65px;
   width: clamp(250px, 38%, 350px);
-
 
   display: flex;
   flex-direction: column;
