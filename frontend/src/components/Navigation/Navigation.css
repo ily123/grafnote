@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding-right: 20px;
+  padding-left: 80px;
+  margin-bottom: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header a {
+  text-decoration: none;
+  color: #999999;
+  transition: color 250ms;
+}
+
+header a:hover {
+  text-decoration: none;
+  color: #7F6DF2;
+}
+
+header .logo {
+  font-size: 20px;
+  font-family: Inter, sans-serif;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 20px;
+  font-family: Inter, sans-serif;
+  margin: 0;
+}
+
+.navigation-container li {
+  list-style-type: none;
+}
