@@ -9,7 +9,12 @@
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www"
+    "start:production": "node ./bin/www",
+    "db:drop": "npx dotenv sequelize-cli db:drop",
+    "db:create": "npx dotenv sequelize-cli db:create",
+    "db:migrate": "npx dotenv sequelize-cli db:migrate",
+    "db:seed": "npx dotenv sequelize-cli db:seed:all",
+    "nuke": "npm run db:drop && npm run db:create && npm run db:migrate && npm run db:seed"
   },
   "keywords": [],
   "author": "",
