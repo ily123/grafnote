@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     title: {
-      type: DataTypes.STRING(255)
+      type: DataTypes.STRING(255),
+      allowNull: false
     },
     content: {
       type: DataTypes.TEXT
@@ -21,5 +22,6 @@ module.exports = (sequelize, DataTypes) => {
   Note.associate = function (models) {
     Note.belongsTo(models.User, { foreignKey: 'userId' });
   };
+
   return Note;
 };
