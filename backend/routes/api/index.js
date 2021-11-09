@@ -9,6 +9,10 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.j
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+// attach Notes routes to the API router
+const notesRouter = require('./note.js');
+router.use('/note', notesRouter);
+
 const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })

@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     folderId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     title: {
       type: DataTypes.STRING(255),
