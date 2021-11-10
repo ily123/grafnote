@@ -15,4 +15,37 @@
 }
 
 .note-editor {
+  background-color: pink;
+}
+
+/*.wmde-markdown-color {
+  background-color: pink;
+}
+.w-md-editor-aree {
+  background-color: black;
+}
+.w-md-editor-text.wmde-markdown-color {
+  background-color: pink;
+  color: white;
+}
+
+textarea {
+  color: pink;
+}
+*/
+
+.note-sidebar-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 50px;
+  color: #999999;
+  background-color: #161616;
+  font-size: 20px;
+}
+
+.note-sidebar-controls i:hover {
+  color: #6C56CC;
+  cursor: pointer;
 }

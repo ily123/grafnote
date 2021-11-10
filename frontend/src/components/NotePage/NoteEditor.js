@@ -4,17 +4,18 @@ import { useSelector } from 'react-redux';
 
 export default function NoteEditor ({ notes }) {
   const activeNoteId = useSelector(state => state.notes.activeNoteId);
-  if (!activeNoteId) return null;
-
   const [content, setContent] = useState('Create a new note :-)');
   useEffect(() => {
-    const note = notes[activeNoteId];
-    setContent(note.content);
+    if (activeNoteId) {
+      const note = notes[activeNoteId];
+      setContent(note.content);
+    }
   }, [activeNoteId]);
 
   return (
     <div className="note-editor-container">
       <MDEditor
+        className="note-editor"
         type="textarea"
         value={content}
         onChange={setContent}

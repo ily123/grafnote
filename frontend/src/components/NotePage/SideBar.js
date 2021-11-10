@@ -11,8 +11,16 @@ export default function SideBar ({ notes }) {
   }, [dispatch]);
 
   return (
-    <div className="note-sidebar-container">
+    <div className='note-sidebar-container'>
       <h2>Your Notes</h2>
+      <div className='note-sidebar-controls'>
+        <div className='note-add-button' onClick={() => console.log('add fldr')}>
+          <i className="far fa-folder-open"></i>
+        </div>
+        <div className='folder-add-button' onClick={() => console.log('add note')}>
+          <i className="far fa-file-alt"></i>
+        </div>
+      </div>
       {(Object.entries(notes).map(([id, note]) => {
         return <div key={id} onClick={() => dispatch(setActiveNoteId(note.id))}>{note.title}</div>;
       }))}
