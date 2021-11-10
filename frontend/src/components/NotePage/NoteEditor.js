@@ -16,17 +16,25 @@ export default function NoteEditor ({ notes }) {
     }
   }, [activeNoteId]);
 
-  console.log('component scope', activeNoteId);
-  const handleContentChange = (content) => {
-    setContent(content);
+  useEffect(() => {
     clearTimeout(timeout.current);
-    console.log('outer scope', activeNoteId);
     timeout.current = setTimeout(() => {
-      console.log('handle change note id', activeNoteId);
-      dispatch(editNote(activeNoteId, 'xyz', content));
-      console.log('i should not print more than once per second');
+      const { title } = notes[activeNoteId];
+      dispatch(editNote(activeNoteId, title, content));
     }, 1000);
-  };
+  }, [content]);
+  // we will figure this out later
+  // console.log('component scope', activeNoteId);
+  // const handleContentChange = (content, id) => {
+  //  setContent(content);
+  //  clearTimeout(timeout.current);
+  //  console.log('outer scope', id);
+  //  timeout.current = setTimeout(() => {
+  //    console.log('handle change note id', id);
+  //    dispatch(editNote(id, 'xyz', content));
+  //    console.log('i should not print more than once per second');
+  //  }, 1000);
+  // };
 
   return (
     <div className="note-editor-container">
@@ -34,7 +42,7 @@ export default function NoteEditor ({ notes }) {
         className="note-editor"
         type="textarea"
         value={content}
-        onChange={handleContentChange}
+        onChange={setContent}
       />
     </div>
   );
