@@ -6,6 +6,7 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import LandingPage from './components/HomePage';
 import Footer from './components/Footer';
+import NotePage from './components/NotePage';
 import { restoreUser } from './store/session';
 
 function App () {
@@ -32,7 +33,7 @@ function App () {
           <SignupFormPage />
         </Route>
         <Route path="/test">
-          This is a test page.
+          <NotePage />
         </Route>
       </Switch>
       <Footer />

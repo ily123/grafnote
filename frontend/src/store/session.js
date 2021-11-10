@@ -67,7 +67,7 @@ const initUser = null;
 export const sessionReducer = (state = initUser, action) => {
   switch (action.type) {
     case LOAD_USER: {
-      if (!action.user) return null;
+      if (!action.user) return state;
       else return action.user;
     }
     case DESTROY_USER: {
