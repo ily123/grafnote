@@ -47,6 +47,7 @@ export const createNote = (title, content) => async dispatch => {
     const { note } = await response.json();
     console.log(note);
     dispatch(addNote(note));
+    dispatch(setActiveNoteId(note.id));
   }
   return response;
 };
