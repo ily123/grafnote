@@ -12,7 +12,12 @@ export const loadNotes = notes => {
   };
 };
 
-export const addNote = (id, title, content) => {};
+export const addNote = (note) => {
+  return {
+    type: ADD_NOTE,
+    note
+  };
+};
 export const destroyNote = id => {};
 export const patchNote = (id, title, content) => {};
 export const setActiveNoteId = id => {
@@ -31,7 +36,21 @@ export const fetchNotes = () => async dispatch => {
   }
   return response;
 };
-export const newNote = (title, content) => {};
+
+export const newNote = (title, content) => async dispatch => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ title, content })
+  };
+  const response = await csrfFetch('api/note', options);
+  if (response.ok) {
+    const { note } = await response.json();
+    console.log(note);
+    dispatch(note);
+  }
+  return response;
+};
+
 export const deleteNote = id => {};
 export const editNote = (id, title, content) => {};
 
