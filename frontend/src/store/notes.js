@@ -53,7 +53,21 @@ export const createNote = (title, content) => async dispatch => {
 };
 
 export const deleteNote = id => {};
-export const editNote = (id, title, content) => {};
+export const editNote = (id, title, content) => async dispatch => {
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify({ title, content })
+  };
+  console.log('thunk note id', id);
+  const response = await csrfFetch(`api/note/${id}`, options);
+  if (response.ok) {
+    const { note } = await response.json();
+    console.log(note);
+    dispatch(addNote(note));
+    dispatch(setActiveNoteId(note.id));
+  }
+  return response;
+};
 
 const initialState = {
   notes: null,

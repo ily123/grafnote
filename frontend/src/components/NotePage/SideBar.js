@@ -15,7 +15,7 @@ export default function SideBar ({ notes }) {
     const response = dispatch(createNote('Untitled', ''));
     console.log(response);
     if (response.ok) {
-      // dispatch(setActiveNoteId(
+      // dispatch(setActiveNoteId());
     }
   };
 

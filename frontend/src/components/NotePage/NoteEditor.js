@@ -1,8 +1,10 @@
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { editNote } from '../../store/notes';
 
 export default function NoteEditor ({ notes }) {
+  const dispatch = useDispatch();
   const activeNoteId = useSelector(state => state.notes.activeNoteId);
   const [content, setContent] = useState('Create a new note :-)');
   const timeout = useRef();
@@ -14,13 +16,14 @@ export default function NoteEditor ({ notes }) {
     }
   }, [activeNoteId]);
 
+  console.log('component scope', activeNoteId);
   const handleContentChange = (content) => {
     setContent(content);
     clearTimeout(timeout.current);
+    console.log('outer scope', activeNoteId);
     timeout.current = setTimeout(() => {
-      // thunk will go here:
-      // - will save change to redux store (?)
-      // - will send PATCH request to the DB
+      console.log('handle change note id', activeNoteId);
+      dispatch(editNote(activeNoteId, 'xyz', content));
       console.log('i should not print more than once per second');
     }, 1000);
   };
