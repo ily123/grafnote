@@ -49,3 +49,12 @@ textarea {
   color: #6C56CC;
   cursor: pointer;
 }
+
+.note-header-container i {
+  color: #999999;
+}
+
+.note-header-container i:hover {
+  cursor: pointer;
+  color: red;
+}

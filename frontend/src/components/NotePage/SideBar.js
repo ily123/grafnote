@@ -5,7 +5,7 @@ import { setActiveNoteId, createNote } from '../../store/notes';
 export default function SideBar ({ notes }) {
   const dispatch = useDispatch();
   const firstNoteId = Object.keys(notes)[0];
-  console.log(createNote);
+
   useEffect(() => {
     dispatch(setActiveNoteId(firstNoteId));
   }, [dispatch]);
