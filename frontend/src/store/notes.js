@@ -37,7 +37,7 @@ export const fetchNotes = () => async dispatch => {
   return response;
 };
 
-export const newNote = (title, content) => async dispatch => {
+export const createNote = (title, content) => async dispatch => {
   const options = {
     method: 'POST',
     body: JSON.stringify({ title, content })
@@ -46,7 +46,7 @@ export const newNote = (title, content) => async dispatch => {
   if (response.ok) {
     const { note } = await response.json();
     console.log(note);
-    dispatch(note);
+    dispatch(addNote(note));
   }
   return response;
 };
@@ -68,7 +68,9 @@ export const notesReducer = (state = initialState, action) => {
       return { ...state, notes };
     }
     case ADD_NOTE: {
-      return state;
+      const notes = { ...state.notes };
+      notes[action.note.id] = action.note;
+      return { ...state, notes };
     }
     case DESTROY_NOTE: {
       return state;
