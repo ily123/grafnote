@@ -19,9 +19,8 @@ export const patchNote = (id, title, content) => {};
 export const fetchNotes = () => async dispatch => {
   const response = await csrfFetch('/api/note');
   if (response.ok) {
-    console.log(response);
     const { notes } = await response.json();
-    console.log(notes);
+    console.log('Notes thunk:', notes);
     dispatch(loadNotes(notes));
   }
   return response;
@@ -31,7 +30,8 @@ export const deleteNote = id => {};
 export const editNote = (id, title, content) => {};
 
 const initialState = {
-  notes: null
+  notes: null,
+  activeNoteId: null
 };
 export const notesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -43,16 +43,16 @@ export const notesReducer = (state = initialState, action) => {
       return { ...state, notes };
     }
     case ADD_NOTE: {
-      return null;
+      return state;
     }
     case DESTROY_NOTE: {
-      return null;
+      return state;
     }
     case PATCH_NOTE: {
-      return null;
+      return state;
     }
     default: {
-      return null;
+      return state;
     }
   }
 };
