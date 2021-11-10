@@ -23,18 +23,6 @@ export default function NoteEditor ({ notes }) {
       dispatch(editNote(activeNoteId, title, content));
     }, 1000);
   }, [content]);
-  // we will figure this out later
-  // console.log('component scope', activeNoteId);
-  // const handleContentChange = (content, id) => {
-  //  setContent(content);
-  //  clearTimeout(timeout.current);
-  //  console.log('outer scope', id);
-  //  timeout.current = setTimeout(() => {
-  //    console.log('handle change note id', id);
-  //    dispatch(editNote(id, 'xyz', content));
-  //    console.log('i should not print more than once per second');
-  //  }, 1000);
-  // };
 
   return (
     <div className="note-editor-container">
