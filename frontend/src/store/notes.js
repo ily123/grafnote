@@ -4,7 +4,7 @@ const LOAD_NOTES = 'notes/load';
 const ADD_NOTE = 'notes/add';
 const DESTROY_NOTE = 'notes/destroy';
 const PATCH_NOTE = 'notes/patch';
-
+const SET_ACTIVE_NOTE = 'notes/set_active_note';
 export const loadNotes = notes => {
   return {
     type: LOAD_NOTES,
@@ -15,6 +15,12 @@ export const loadNotes = notes => {
 export const addNote = (id, title, content) => {};
 export const destroyNote = id => {};
 export const patchNote = (id, title, content) => {};
+export const setActiveNoteId = id => {
+  return {
+    type: SET_ACTIVE_NOTE,
+    id
+  };
+};
 
 export const fetchNotes = () => async dispatch => {
   const response = await csrfFetch('/api/note');
@@ -50,6 +56,9 @@ export const notesReducer = (state = initialState, action) => {
     }
     case PATCH_NOTE: {
       return state;
+    }
+    case SET_ACTIVE_NOTE: {
+      return { ...state, activeNoteId: action.id };
     }
     default: {
       return state;
