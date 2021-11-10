@@ -35,11 +35,12 @@ router.post('/', asyncHandler(async (req, res) => {
 router.patch('/:id', asyncHandler(async (req, res) => {
   const userId = req.user?.id || 1;
   const { id } = req.params;
-  const { folderId, title, content } = req.body;
-  const note = await Note.update(
-    { userId, folderId, title, content },
-    { where: { id } }
+  const { title, content } = req.body;
+  const [_, [note]] = await Note.update(
+    { title, content },
+    { where: { id }, returning: true }
   );
+  console.log('this is the note', note);
   res.json({ note });
 }));
 
