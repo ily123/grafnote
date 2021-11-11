@@ -1,7 +1,19 @@
-import MDEditor from '@uiw/react-md-editor';
+// import MDEditor from '@uiw/react-md-editor';
+import ReactMarkdown from 'react-markdown';
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editNote, deleteNote } from '../../store/notes';
+
+function TextEntryArea ({ content, setContent }) {
+  return (
+    <textarea
+      className="note-editor"
+      type="text"
+      value={content}
+      onChange={(e) => setContent(e.target.value)}
+    />
+  );
+}
 
 export default function NoteEditor ({ notes }) {
   const dispatch = useDispatch();
@@ -44,12 +56,10 @@ export default function NoteEditor ({ notes }) {
           onClick={() => deleteActiveNote()}
         ></i>
       </div>
-      <MDEditor
-        className="note-editor"
-        type="textarea"
-        value={content}
-        onChange={setContent}
-      />
+      <TextEntryArea content={content} setContent={setContent}/>
+      <div>Mardown preview below is an extra feature, and work in progress.</div>
+      <ReactMarkdown className='note-markdown-preview'>{content}</ReactMarkdown>
+
     </div>
   );
 }

@@ -18,22 +18,6 @@
   background-color: pink;
 }
 
-/*.wmde-markdown-color {
-  background-color: pink;
-}
-.w-md-editor-aree {
-  background-color: black;
-}
-.w-md-editor-text.wmde-markdown-color {
-  background-color: pink;
-  color: white;
-}
-
-textarea {
-  color: pink;
-}
-*/
-
 .note-sidebar-controls {
   display: flex;
   flex-direction: row;
