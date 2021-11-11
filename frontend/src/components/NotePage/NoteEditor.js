@@ -4,6 +4,17 @@ import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editNote, deleteNote } from '../../store/notes';
 
+function TextEntryArea ({ content, setContent }) {
+  return (
+    <textarea
+      className="note-editor"
+      type="text"
+      value={content}
+      onChange={(e) => setContent(e.target.value)}
+    />
+  );
+}
+
 export default function NoteEditor ({ notes }) {
   const dispatch = useDispatch();
   const activeNoteId = useSelector(state => state.notes.activeNoteId);
@@ -45,13 +56,9 @@ export default function NoteEditor ({ notes }) {
           onClick={() => deleteActiveNote()}
         ></i>
       </div>
-      <textarea
-        className="note-editor"
-        type="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <TextEntryArea content={content} setContent={setContent}/>
+      <div>Mardown preview below is an extra feature, and work in progress.</div>
+      <ReactMarkdown className='note-markdown-preview'>{content}</ReactMarkdown>
 
     </div>
   );
