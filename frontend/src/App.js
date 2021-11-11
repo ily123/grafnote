@@ -19,7 +19,7 @@ function App () {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="main-container">
       <Navigation />
       <Switch>
         <Route exact path='/'>

@@ -8,6 +8,7 @@ header {
   padding-left: 80px;
   margin-bottom: 80px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
 }
 
 header a {
@@ -34,6 +35,7 @@ header .logo {
   column-gap: 20px;
   font-family: Inter, sans-serif;
   margin: 0;
+  padding-right: 50px;
 }
 
 .navigation-container li {

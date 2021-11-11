@@ -21,7 +21,6 @@ export default function SideBar ({ notes }) {
 
   return (
     <div className='note-sidebar-container'>
-      <h2>Your Notes</h2>
       <div className='note-sidebar-controls'>
         <div className='note-add-button' onClick={newNote}>
           <i className="far fa-file-alt"></i>
@@ -31,7 +30,13 @@ export default function SideBar ({ notes }) {
         </div>
       </div>
       {(Object.entries(notes).map(([id, note]) => {
-        return <div key={id} onClick={() => dispatch(setActiveNoteId(note.id))}>{note.title}</div>;
+        return (
+          <div
+            className='note-link'
+            key={id}
+            onClick={() => dispatch(setActiveNoteId(note.id))}>{note.title}
+          </div>
+        );
       }))}
     </div>
   );

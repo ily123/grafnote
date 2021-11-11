@@ -3,3 +3,11 @@ body {
   background-color: #161616;
   margin: 0;
 }
+
+.main-container {
+  display: flex;
+  min-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
