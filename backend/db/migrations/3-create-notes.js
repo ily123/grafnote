@@ -14,8 +14,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       folderId: {
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
+        defaultValue: 0,
         references: { model: 'Folders' },
         type: Sequelize.INTEGER
       },

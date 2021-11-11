@@ -12,6 +12,8 @@ const { handleValidationErrors } = require('../../utils/validation');
 // attach Notes routes to the API router
 const notesRouter = require('./note.js');
 router.use('/note', notesRouter);
+const foldersRouter = require('./folder.js');
+router.use('/folder', foldersRouter);
 
 const validateLogin = [
   check('credential')
