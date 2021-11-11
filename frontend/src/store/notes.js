@@ -18,7 +18,14 @@ export const addNote = (note) => {
     note
   };
 };
-export const destroyNote = id => {};
+
+export const destroyNote = id => {
+  return {
+    type: DESTROY_NOTE,
+    id
+  };
+};
+
 export const patchNote = (id, title, content) => {};
 export const setActiveNoteId = id => {
   return {
@@ -37,7 +44,7 @@ export const fetchNotes = () => async dispatch => {
   return response;
 };
 
-export const newNote = (title, content) => async dispatch => {
+export const createNote = (title, content) => async dispatch => {
   const options = {
     method: 'POST',
     body: JSON.stringify({ title, content })
@@ -45,14 +52,34 @@ export const newNote = (title, content) => async dispatch => {
   const response = await csrfFetch('api/note', options);
   if (response.ok) {
     const { note } = await response.json();
-    console.log(note);
-    dispatch(note);
+    dispatch(addNote(note));
+    dispatch(setActiveNoteId(note.id));
   }
   return response;
 };
 
-export const deleteNote = id => {};
-export const editNote = (id, title, content) => {};
+export const deleteNote = id => async dispatch => {
+  const options = { method: 'DELETE' };
+  const response = await csrfFetch(`api/note/${id}`, options);
+  if (response.ok) {
+    dispatch(destroyNote(id));
+    dispatch(setActiveNoteId(null));
+  }
+  return response;
+};
+
+export const editNote = (id, title, content) => async dispatch => {
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify({ title, content })
+  };
+  const response = await csrfFetch(`api/note/${id}`, options);
+  if (response.ok) {
+    const { note } = await response.json();
+    dispatch(addNote(note));
+  }
+  return response;
+};
 
 const initialState = {
   notes: null,
@@ -68,16 +95,26 @@ export const notesReducer = (state = initialState, action) => {
       return { ...state, notes };
     }
     case ADD_NOTE: {
-      return state;
+      const notes = { ...state.notes };
+      notes[action.note.id] = action.note;
+      return { ...state, notes };
     }
     case DESTROY_NOTE: {
-      return state;
+      const notes = { ...state.notes };
+      delete notes[action.id];
+      return { ...state, notes };
     }
     case PATCH_NOTE: {
       return state;
     }
     case SET_ACTIVE_NOTE: {
-      return { ...state, activeNoteId: action.id };
+      if (action.id) {
+        return { ...state, activeNoteId: action.id };
+      } else {
+        // this will break if there are no notes left TODO
+        const firstNoteId = Object.keys(state.notes)[0];
+        return { ...state, activeNoteId: firstNoteId };
+      }
     }
     default: {
       return state;
