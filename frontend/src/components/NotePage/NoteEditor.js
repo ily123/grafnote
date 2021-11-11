@@ -1,4 +1,5 @@
-import MDEditor from '@uiw/react-md-editor';
+// import MDEditor from '@uiw/react-md-editor';
+import ReactMarkdown from 'react-markdown';
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editNote, deleteNote } from '../../store/notes';
@@ -44,12 +45,14 @@ export default function NoteEditor ({ notes }) {
           onClick={() => deleteActiveNote()}
         ></i>
       </div>
-      <MDEditor
+      <textarea
         className="note-editor"
-        type="textarea"
+        type="text"
         value={content}
-        onChange={setContent}
+        onChange={(e) => setContent(e.target.value)}
       />
+      <ReactMarkdown>{content}</ReactMarkdown>
+
     </div>
   );
 }
