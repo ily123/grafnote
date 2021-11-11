@@ -1,7 +1,7 @@
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editNote } from '../../store/notes';
+import { editNote, deleteNote } from '../../store/notes';
 
 export default function NoteEditor ({ notes }) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ export default function NoteEditor ({ notes }) {
 
   useEffect(() => {
     if (activeNoteId) {
+      console.log('useEffect', activeNoteId);
       const note = notes[activeNoteId];
       setContent(note.content);
       setTitle(note.title);
@@ -25,6 +26,11 @@ export default function NoteEditor ({ notes }) {
     }, 1000);
   }, [content, title]);
 
+  const deleteActiveNote = () => {
+    console.log('delete note', activeNoteId);
+    dispatch(deleteNote(activeNoteId));
+  };
+
   return (
     <div className="note-editor-container">
       <div className="note-header-container">
@@ -34,7 +40,9 @@ export default function NoteEditor ({ notes }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <i className="far fa-trash-alt"></i>
+        <i className="far fa-trash-alt"
+          onClick={() => deleteActiveNote()}
+        ></i>
       </div>
       <MDEditor
         className="note-editor"
