@@ -10,9 +10,12 @@ export default function Navigation () {
       <div className='logo'><NavLink to='/'>G R A F N O T E</NavLink></div>
       <ul className="navigation-container">
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/test'>Test</NavLink></li>
         {user
-          ? (<li><ProfileButton user={user}/></li>)
+          ? (
+            <>
+              <li><NavLink to='/test'>Notes FIRST FEATURE</NavLink></li>
+              <li><ProfileButton user={user}/></li>
+            </>)
           : (
             <>
               <li><NavLink to='/login'>Login</NavLink></li>
