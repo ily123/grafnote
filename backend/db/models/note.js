@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     folderId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: true,
+      defaultValue: null
     },
     title: {
       type: DataTypes.STRING(255),
@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Note.associate = function (models) {
     Note.belongsTo(models.User, { foreignKey: 'userId' });
+    Note.belongsTo(models.Folder, { foreignKey: 'folderId' });
   };
 
   return Note;
