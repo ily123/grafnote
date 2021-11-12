@@ -6,6 +6,7 @@ const DESTROY_NOTE = 'notes/destroy';
 const PATCH_NOTE = 'notes/patch';
 const SET_ACTIVE_NOTE = 'notes/set_active_note';
 const LOAD_FOLDERS = 'folders/load';
+const ADD_FOLDER = 'folders/add';
 
 export const loadNotes = notes => {
   return {
@@ -41,6 +42,19 @@ export const loadFolders = (folders) => {
     type: LOAD_FOLDERS,
     folders
   };
+};
+
+export const createFolder = (title) => async dispatch => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ title })
+  };
+  const response = await csrfFetch('api/folder', options);
+  if (response.ok) {
+    const { folder } = await response.json();
+    dispatch({ type: ADD_FOLDER, folder });
+  }
+  return response;
 };
 
 export const fetchNotesAndNotebooks = () => async dispatch => {
@@ -110,6 +124,11 @@ export const notesReducer = (state = initialState, action) => {
       action.folders.forEach(folder => {
         folders[folder.id] = folder;
       });
+      return { ...state, folders };
+    }
+    case ADD_FOLDER: {
+      const folders = { ...state.folders };
+      folders[action.folder.id] = action.folder;
       return { ...state, folders };
     }
     case LOAD_NOTES: {

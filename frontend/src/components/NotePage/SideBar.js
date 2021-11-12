@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActiveNoteId, createNote } from '../../store/notes';
+import { setActiveNoteId, createNote, createFolder } from '../../store/notes';
 
 function FileLink ({ type, payload }) {
   const dispatch = useDispatch();
@@ -92,13 +92,22 @@ export default function SideBar ({ notes, folders }) {
     }
   };
 
+  const newFolder = async () => {
+    console.log('create new folder...');
+    const response = dispatch(createFolder('New Folder'));
+    console.log(response);
+    if (response.ok) {
+      // dispatch(setActiveNoteId());
+    }
+  };
+
   return (
     <div className='note-sidebar-container'>
       <div className='note-sidebar-controls'>
         <div className='note-add-button' onClick={newNote}>
           <i className="far fa-file-alt"></i>
         </div>
-        <div className='folder-add-button' onClick={() => alert('this button is not functional yet')}>
+        <div className='folder-add-button' onClick={newFolder}>
           <i className="far fa-folder-open"></i>
         </div>
       </div>
