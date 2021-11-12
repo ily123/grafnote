@@ -11,11 +11,11 @@ export default function NotePage () {
     dispatch(fetchNotesAndNotebooks());
   }, [dispatch]);
 
-  const { notes } = useSelector(state => state.notes);
-  if (!notes) return null;
+  const { notes, folders } = useSelector(state => state.notes);
+  if (!notes || !folders) return null;
   return (
     <div className='note-container'>
-      <SideBar notes={notes}/>
+      <SideBar notes={notes} folders={folders}/>
       <NoteEditor notes={notes}/>
     </div>
   );
