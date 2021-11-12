@@ -2,8 +2,41 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setActiveNoteId, createNote } from '../../store/notes';
 
-function FileTree ({ notes, folders, setActiveNoteId }) {
+function FileLink ({ type, payload }) {
   const dispatch = useDispatch();
+  return (
+    <div
+      className={type + '-link'}
+      key={type + payload.id}
+      onClick={() => dispatch(setActiveNoteId(payload.id))}
+    >{payload.title}</div>
+  );
+}
+
+function FolderLink ({ type, payload }) {
+  // const dispatch = useDispatch();
+  return (
+    <div
+      className={type + '-link'}
+      key={type + payload.id}
+    >
+      <div>
+        <i className="fas fa-folder" style={{ paddingRight: '5px' }}></i>
+        {payload.title}
+      </div>
+      <div className="folder-controls">
+        <i className="far fa-edit"
+          onClick={() => alert('this will rename note')}
+        ></i>
+        <i className="far fa-trash-alt"
+          onClick={() => alert('this will delete note')}
+        ></i>
+      </div>
+    </div>
+  );
+}
+
+function FileTree ({ notes, folders, setActiveNoteId }) {
   // this is amazingly bad
   // you are killing me, go to sleep
   // so, for later, here is what I am doing:
@@ -29,38 +62,13 @@ function FileTree ({ notes, folders, setActiveNoteId }) {
     }
   });
 
-  console.log(tree);
   return (
     <div>
       {(tree.map(({ type, payload }) => {
         if (type.startsWith('note')) {
-          return (
-            <div
-              className={type + '-link'}
-              key={type + payload.id}
-              onClick={() => dispatch(setActiveNoteId(payload.id))}
-            >{payload.title}</div>
-          );
+          return <FileLink type={type} payload={payload} />;
         } else {
-          return (
-            <div
-              className={type + '-link'}
-              key={type + payload.id}
-            >
-              <div>
-                <i className="fas fa-folder" style={{ paddingRight: '5px' }}></i>
-                {payload.title}
-              </div>
-              <div className="folder-controls">
-                <i className="far fa-edit"
-                  onClick={() => alert('this will rename note')}
-                ></i>
-                <i className="far fa-trash-alt"
-                  onClick={() => alert('this will delete note')}
-                ></i>
-              </div>
-            </div>
-          );
+          return <FolderLink type={type} payload={payload} />;
         }
       }))}
     </div>
