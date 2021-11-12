@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setActiveNoteId, createNote, createFolder, deleteFolder } from '../../store/notes';
-
+// editFolderTitle
 function FileLink ({ type, payload }) {
   const dispatch = useDispatch();
   return (
@@ -15,6 +15,8 @@ function FileLink ({ type, payload }) {
 
 function FolderLink ({ type, payload }) {
   const dispatch = useDispatch();
+  const [title, setTitle] = useState(payload.title);
+  const [readOnly, setReadOnly] = useState(true);
   console.log(payload.id);
   if (!payload || !type) return null;
   return (
@@ -22,18 +24,18 @@ function FolderLink ({ type, payload }) {
       className={type + '-link'}
       key={type + payload.id}
     >
-      <div>
-        <i className="fas fa-folder" style={{ paddingRight: '5px' }}></i>
-        {payload.title}
-      </div>
-      <div className="folder-controls">
-        <i className="far fa-edit"
-          onClick={() => alert('this will rename note')}
-        ></i>
-        <i className="far fa-trash-alt"
-          onClick={() => dispatch(deleteFolder(payload.id))}
-        ></i>
-      </div>
+      <i className="fas fa-folder" style={{ paddingRight: '5px' }}></i>
+      <input type="text"
+        value={title}
+        readOnly={readOnly}
+        className={readOnly ? 'inactive' : 'active'}
+        onDoubleClick={() => setReadOnly(false)}
+        onBlur={() => setReadOnly(true)}
+        onChange={(e) => setTitle(e.value)}
+      ></input>
+      <i className="far fa-trash-alt"
+        onClick={() => dispatch(deleteFolder(payload.id))}
+      ></i>
     </div>
   );
 }

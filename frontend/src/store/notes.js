@@ -108,6 +108,11 @@ export const deleteNote = id => async dispatch => {
   return response;
 };
 
+export const editFolderTitle = title => async dispatch => {
+  const options = { method: 'PATCH' };
+  console.log('hello', options);
+};
+
 export const editNote = (id, title, content) => async dispatch => {
   const options = {
     method: 'PATCH',

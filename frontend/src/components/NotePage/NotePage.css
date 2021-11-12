@@ -36,9 +36,31 @@
 
 .folder-link {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding-right: 10px;
+  cursor: default;
+}
+.folder-link input{
+  background-color: #161616;
+  color: #999999;
+  border: none;
+  flex: 1 1 auto;
+  cursor: default;
+}
+.folder-link input.active{
+  color: white; /*#6C56CC*/
+  background-color: #202020;
+}
+.folder-link input:hover{
+  cursor: default;
+}
+.folder-link i.fa-trash-alt {
+  cursor: pointer;
+}
+.folder-link i.fa-trash-alt:hover {
+  cursor: pointer;
+  color: red;
 }
 
 .note-editor-container {
