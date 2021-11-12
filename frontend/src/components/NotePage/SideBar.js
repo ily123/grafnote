@@ -22,10 +22,10 @@ function FileTree ({ notes, folders, setActiveNoteId }) {
     });
   });
   // loop through notes again, and append folder-less
-  // to the end of the list
+  // to the start of the list
   Object.values(notes).forEach(note => {
     if (!trackNotes.has(note.id)) {
-      tree.push({ type: 'note', payload: note });
+      tree.unshift({ type: 'note', payload: note });
     }
   });
 
@@ -72,15 +72,6 @@ export default function SideBar ({ notes, folders }) {
           <i className="far fa-folder-open"></i>
         </div>
       </div>
-      {(Object.entries(notes).map(([id, note]) => {
-        return (
-          <div
-            className='note-link'
-            key={id}
-            onClick={() => dispatch(setActiveNoteId(note.id))}>{note.title}
-          </div>
-        );
-      }))}
       <>
         <FileTree notes={notes} folders={folders} setActiveNoteId={setActiveNoteId}/>
       </>
