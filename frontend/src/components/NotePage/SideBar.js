@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActiveNoteId, createNote, createFolder } from '../../store/notes';
+import { setActiveNoteId, createNote, createFolder, deleteFolder } from '../../store/notes';
 
 function FileLink ({ type, payload }) {
   const dispatch = useDispatch();
@@ -14,7 +14,9 @@ function FileLink ({ type, payload }) {
 }
 
 function FolderLink ({ type, payload }) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  console.log(payload.id);
+  if (!payload || !type) return null;
   return (
     <div
       className={type + '-link'}
@@ -29,7 +31,7 @@ function FolderLink ({ type, payload }) {
           onClick={() => alert('this will rename note')}
         ></i>
         <i className="far fa-trash-alt"
-          onClick={() => alert('this will delete note')}
+          onClick={() => dispatch(deleteFolder(payload.id))}
         ></i>
       </div>
     </div>

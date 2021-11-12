@@ -7,6 +7,7 @@ const PATCH_NOTE = 'notes/patch';
 const SET_ACTIVE_NOTE = 'notes/set_active_note';
 const LOAD_FOLDERS = 'folders/load';
 const ADD_FOLDER = 'folders/add';
+const DESTROY_FOLDER = 'folders/destroy';
 
 export const loadNotes = notes => {
   return {
@@ -55,6 +56,14 @@ export const createFolder = (title) => async dispatch => {
     dispatch({ type: ADD_FOLDER, folder });
   }
   return response;
+};
+
+export const deleteFolder = (id) => async dispatch => {
+  const options = { method: 'DELETE' };
+  const response = await csrfFetch(`api/folder/${id}`, options);
+  if (response.ok) {
+    dispatch({ type: DESTROY_FOLDER, id });
+  }
 };
 
 export const fetchNotesAndNotebooks = () => async dispatch => {
@@ -129,6 +138,11 @@ export const notesReducer = (state = initialState, action) => {
     case ADD_FOLDER: {
       const folders = { ...state.folders };
       folders[action.folder.id] = action.folder;
+      return { ...state, folders };
+    }
+    case DESTROY_FOLDER: {
+      const folders = { ...state.folders };
+      delete folders[action.id];
       return { ...state, folders };
     }
     case LOAD_NOTES: {
