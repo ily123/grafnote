@@ -29,6 +29,18 @@
   color: #6C56CC;
 }
 
+.note-top-link:hover {
+  cursor: pointer;
+  color: #6C56CC;
+}
+
+.folder-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+
 .note-editor-container {
   background-color: #161616;
   width: 80%;

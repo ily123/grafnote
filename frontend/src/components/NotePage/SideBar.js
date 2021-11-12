@@ -25,7 +25,7 @@ function FileTree ({ notes, folders, setActiveNoteId }) {
   // to the start of the list
   Object.values(notes).forEach(note => {
     if (!trackNotes.has(note.id)) {
-      tree.unshift({ type: 'note', payload: note });
+      tree.unshift({ type: 'note-top', payload: note });
     }
   });
 
@@ -33,13 +33,35 @@ function FileTree ({ notes, folders, setActiveNoteId }) {
   return (
     <div>
       {(tree.map(({ type, payload }) => {
-        return (
-          <div
-            className={type + '-link'}
-            key={type + payload.id}
-            onClick={type === 'note' ? () => dispatch(setActiveNoteId(payload.id)) : null}
-          >{payload.title}</div>
-        );
+        if (type.startsWith('note')) {
+          return (
+            <div
+              className={type + '-link'}
+              key={type + payload.id}
+              onClick={() => dispatch(setActiveNoteId(payload.id))}
+            >{payload.title}</div>
+          );
+        } else {
+          return (
+            <div
+              className={type + '-link'}
+              key={type + payload.id}
+            >
+              <div>
+                <i className="fas fa-folder" style={{ paddingRight: '5px' }}></i>
+                {payload.title}
+              </div>
+              <div className="folder-controls">
+                <i className="far fa-edit"
+                  onClick={() => alert('this will rename note')}
+                ></i>
+                <i className="far fa-trash-alt"
+                  onClick={() => alert('this will delete note')}
+                ></i>
+              </div>
+            </div>
+          );
+        }
       }))}
     </div>
   );
