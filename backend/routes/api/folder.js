@@ -8,7 +8,8 @@ router.use(restoreUser);
 router.get('/', asyncHandler(async (req, res) => {
   const userId = req.user?.id || 1;
   const folders = await Folder.findAll({ where: { userId } });
-  res.json(folders);
+  console.log('backend-------------', folders);
+  res.json({ folders });
 }));
 
 router.post('/', asyncHandler(async (req, res) => {
