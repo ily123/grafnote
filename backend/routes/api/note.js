@@ -15,7 +15,6 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/:id', asyncHandler(async (req, res) => {
   const userId = req.user?.id || 1;
   const { id } = req.params;
-  // const note = Note.findByPk(id);
   const note = await Note.findOne({ where: { id, userId } });
   res.json({ note });
 }));
