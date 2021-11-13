@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setActiveNoteId, createNote, createFolder, deleteFolder } from '../../store/notes';
-// editFolderTitle
+import { setActiveNoteId, createNote, createFolder, deleteFolder, editFolderTitle } from '../../store/notes';
+
 function FileLink ({ type, payload }) {
   const dispatch = useDispatch();
   return (
@@ -17,8 +17,14 @@ function FolderLink ({ type, payload }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(payload.title);
   const [readOnly, setReadOnly] = useState(true);
-  console.log(payload.id);
+  console.log(title);
   if (!payload || !type) return null;
+
+  const sendNewTitle = () => {
+    setReadOnly(true);
+    dispatch(editFolderTitle(payload.id, title));
+  };
+
   return (
     <div
       className={type + '-link'}
@@ -30,8 +36,8 @@ function FolderLink ({ type, payload }) {
         readOnly={readOnly}
         className={readOnly ? 'inactive' : 'active'}
         onDoubleClick={() => setReadOnly(false)}
-        onBlur={() => setReadOnly(true)}
-        onChange={(e) => setTitle(e.value)}
+        onBlur={(e) => sendNewTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
       ></input>
       <i className="far fa-trash-alt"
         onClick={() => dispatch(deleteFolder(payload.id))}

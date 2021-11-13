@@ -26,10 +26,13 @@ router.patch('/:id', asyncHandler(async (req, res) => {
   const userId = req.user?.id || 1;
   const { id } = req.params;
   const { title } = req.body;
+  console.log('this is the id', id);
+  console.log('this is the title', title);
   const [_, [folder]] = await Folder.update(
     { title },
     { where: { id }, returning: true }
   );
+  console.log(folder);
   res.json({ folder });
 }));
 
