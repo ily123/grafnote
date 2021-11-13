@@ -123,10 +123,10 @@ export const deleteNote = id => async dispatch => {
   return response;
 };
 
-export const editNote = (id, title, content) => async dispatch => {
+export const editNote = (id, title, content, folderId) => async dispatch => {
   const options = {
     method: 'PATCH',
-    body: JSON.stringify({ title, content })
+    body: JSON.stringify({ title, content, folderId })
   };
   const response = await csrfFetch(`api/note/${id}`, options);
   if (response.ok) {
