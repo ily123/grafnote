@@ -16,7 +16,7 @@ export default function NotePage () {
   return (
     <div className='note-container'>
       <SideBar notes={notes} folders={folders}/>
-      <NoteEditor notes={notes}/>
+      <NoteEditor notes={notes} folders={folders}/>
     </div>
   );
 }

@@ -15,11 +15,12 @@ function TextEntryArea ({ content, setContent }) {
   );
 }
 
-export default function NoteEditor ({ notes }) {
+export default function NoteEditor ({ notes, folders }) {
   const dispatch = useDispatch();
   const activeNoteId = useSelector(state => state.notes.activeNoteId);
   const [content, setContent] = useState('Create a new note :-)');
   const [title, setTitle] = useState('Untitled');
+  const [selectedFolder, setSelectedFolder] = useState(0);
   const timeout = useRef();
 
   useEffect(() => {
@@ -28,18 +29,21 @@ export default function NoteEditor ({ notes }) {
       const note = notes[activeNoteId];
       setContent(note.content);
       setTitle(note.title);
+      setSelectedFolder(note.folderId || 0);
     }
   }, [activeNoteId]);
 
   useEffect(() => {
     clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
-      dispatch(editNote(activeNoteId, title, content));
+      dispatch(editNote(activeNoteId, title, content, selectedFolder));
     }, 1000);
   }, [content, title]);
 
+  useEffect(() => {
+    dispatch(editNote(activeNoteId, title, content, selectedFolder));
+  }, [selectedFolder]);
   const deleteActiveNote = () => {
-    console.log('delete note', activeNoteId);
     dispatch(deleteNote(activeNoteId));
   };
 
@@ -52,6 +56,15 @@ export default function NoteEditor ({ notes }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <select
+          value={selectedFolder}
+          onChange={(e) => setSelectedFolder(e.target.value)}
+        >
+          <option value="0">No Folder</option>
+          {(Object.entries(folders).map(([id, folder]) => {
+            return <option key={id} value={id}>{folder.title}</option>;
+          }))};
+        </select>
         <i className="far fa-trash-alt"
           onClick={() => deleteActiveNote()}
         ></i>

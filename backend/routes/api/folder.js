@@ -39,7 +39,9 @@ router.patch('/:id', asyncHandler(async (req, res) => {
 router.delete('/:id', asyncHandler(async (req, res) => {
   const userId = req.user?.id || 1;
   const { id } = req.params;
-  const success = await Folder.destroy({ where: { id, userId } });
+  //  const success = await Folder.destroy({ where: { id, userId } });
+  const folder = await Folder.findByPk(id);
+  const success = await folder.destroy();
   res.json({ success: !!success });
 }));
 
