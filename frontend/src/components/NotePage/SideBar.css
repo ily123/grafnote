@@ -1,0 +1,69 @@
+.note-sidebar-container {
+  background-color: #161616;
+  width: 15%;
+  max-width: 200px;
+}
+
+
+.note-sidebar-container .note-link {
+  padding-left: 20px;
+  padding-top: 3px;
+}
+.note-sidebar-container .note-link:nth-child(2) {
+  padding-top: 5px;
+}
+
+.note-link:hover {
+  cursor: pointer;
+  color: #6C56CC;
+}
+
+.note-top-link:hover {
+  cursor: pointer;
+  color: #6C56CC;
+}
+
+.folder-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 10px;
+  cursor: default;
+}
+.folder-link input{
+  background-color: #161616;
+  color: #999999;
+  border: none;
+  flex: 1 1 auto;
+  cursor: default;
+}
+.folder-link input.active{
+  color: white; /*#6C56CC*/
+  background-color: #202020;
+}
+.folder-link input:hover{
+  cursor: default;
+}
+.folder-link i.fa-trash-alt {
+  cursor: pointer;
+}
+.folder-link i.fa-trash-alt:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.note-sidebar-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 50px;
+  color: #999999;
+  background-color: #161616;
+  font-size: 20px;
+}
+
+.note-sidebar-controls i:hover {
+  color: #6C56CC;
+  cursor: pointer;
+}

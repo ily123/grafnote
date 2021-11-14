@@ -1,0 +1,46 @@
+.note-editor-container {
+  background-color: #161616;
+  width: 80%;
+}
+
+.note-editor {
+  color: #DCDDDE;
+  background-color: #202020;
+}
+
+
+.note-header-container i {
+  font-size: 20px;
+  color: #999999;
+}
+
+.note-header-container i:hover {
+  cursor: pointer;
+  color: red;
+}
+.note-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.note-container textarea {
+  width: 100%;
+  height: 50%;
+  resize: none;
+  border: none;
+}
+
+.note-container textarea:focus, input:focus{
+    outline: none;
+}
+
+input.note-title:focus {
+  color: #6C56CC;
+}
+.note-container .note-title {
+  font-size: 20px;
+  color: #DCDDDE;
+  background-color: #161616;
+  border: none;
+}

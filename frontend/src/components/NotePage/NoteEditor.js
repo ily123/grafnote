@@ -1,4 +1,4 @@
-// import MDEditor from '@uiw/react-md-editor';
+import './NoteEditor.css';
 import ReactMarkdown from 'react-markdown';
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

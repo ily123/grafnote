@@ -1,3 +1,4 @@
+import './SideBar.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setActiveNoteId, createNote, createFolder, deleteFolder, editFolderTitle } from '../../store/notes';
