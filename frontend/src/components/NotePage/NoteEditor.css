@@ -1,6 +1,8 @@
 .note-editor-container {
   background-color: #161616;
-  width: 80%;
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
 }
 
 .note-editor {
@@ -25,8 +27,7 @@
 }
 
 .note-container textarea {
-  width: 100%;
-  height: 50%;
+  height: 100%;
   resize: none;
   border: none;
 }
