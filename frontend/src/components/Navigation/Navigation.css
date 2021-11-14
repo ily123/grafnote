@@ -10,15 +10,16 @@ header {
   width: 100%;
 }
 
-header a {
+header a, li {
   text-decoration: none;
   color: #999999;
   transition: color 250ms;
 }
 
-header a:hover {
+header a:hover, li:hover {
   text-decoration: none;
   color: #7F6DF2;
+  cursor: pointer;
 }
 
 header .logo {

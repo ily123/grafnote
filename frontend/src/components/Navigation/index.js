@@ -1,9 +1,10 @@
 import './Navigation.css';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../../store/session';
 
 export default function Navigation () {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.session);
   return (
     <header>
@@ -15,8 +16,12 @@ export default function Navigation () {
         {user
           ? (
             <>
-              <li><NavLink to='/notes'>Your Notes</NavLink></li>
-              <li><ProfileButton user={user}/></li>
+              <li><NavLink to='/notes'>
+                <i className="fas fa-sticky-note"></i> Notes</NavLink>
+              </li>
+              <li onClick={() => dispatch(logoutUser())}>
+                <i className="fas fa-sign-out-alt"/> {`Log out (${user.email})`}
+              </li>
             </>)
           : (
             <>
