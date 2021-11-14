@@ -19,7 +19,7 @@ function App () {
   }, [dispatch]);
 
   return (
-    <div className="main-container">
+    <>
       <Navigation />
       <Switch>
         <Route exact path='/'>
@@ -39,7 +39,7 @@ function App () {
           <h1>this page does not exist</h1>
         </Route>
       </Switch>
-    </div>
+    </>
   );
 }
 
