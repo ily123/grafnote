@@ -1,5 +1,7 @@
 import './LandingPage.css';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../store/session';
 
 const endorsements = [
   {
@@ -31,6 +33,12 @@ function Endorsement ({ content }) {
 }
 
 export default function LandingPage () {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const loginDemoUser = async () => {
+    await dispatch(loginUser('Demo-lition', 'password'));
+    history.push('/notes');
+  };
   return (
     <div className='landing-page'>
       <div className='hero-container'>
@@ -40,7 +48,9 @@ export default function LandingPage () {
              with <b>markdown support</b> and graph navigation.
           </p>
         </div>
-        <NavLink className='hero-demo-login' to='/test'><p>Login as Demo User</p><p>No sign up requried</p></NavLink>
+        <div className='hero-demo-login' to='/'
+          onClick={loginDemoUser}
+        ><p>Login as Demo User</p><p>No sign up requried</p></div>
         <div className='hero-image'>
         </div>
       </div>
