@@ -3,7 +3,7 @@
   */
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
-const { User } = require('../../db/models');
+const { User, Note } = require('../../db/models');
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
 
 const { check } = require('express-validator');
@@ -69,6 +69,12 @@ router.delete('/logout', (req, res) => {
 router.post('/signup', validateSignup, async (req, res) => {
   const { email, password, username } = req.body;
   const user = await User.signup({ email, username, password });
+  // create a welcome note as the 1st note for new user
+  await Note.create({
+    userId: user.id,
+    title: 'Welcome!',
+    content: 'This is your first note!'
+  });
   await setTokenCookie(res, user);
   return res.json({ user });
 });
