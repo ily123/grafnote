@@ -10,13 +10,13 @@ header {
   width: 100%;
 }
 
-header a, li {
+header a, header li {
   text-decoration: none;
   color: #999999;
   transition: color 250ms;
 }
 
-header a:hover, li:hover {
+header a:hover, header li:hover {
   text-decoration: none;
   color: #7F6DF2;
   cursor: pointer;
