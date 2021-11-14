@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { Folder } = require('../../db/models/');
+const { requireAuth } = require('../../utils/auth.js');
+
+router.use(requireAuth);
 
 router.get('/', asyncHandler(async (req, res) => {
   const userId = req.user.id;

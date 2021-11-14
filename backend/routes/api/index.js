@@ -4,12 +4,11 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../db/models');
-const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
+const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
-router.use(requireAuth);
 // attach Notes routes to the API router
 const notesRouter = require('./note.js');
 router.use('/note', notesRouter);
