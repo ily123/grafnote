@@ -38,6 +38,7 @@
   border-radius: 5px;
   height: 65px;
   width: clamp(250px, 38%, 350px);
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
