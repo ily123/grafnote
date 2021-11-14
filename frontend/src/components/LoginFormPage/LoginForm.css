@@ -1,11 +1,27 @@
 .user-login-form form {
   display: flex;
   flex-direction: column;
-  border: 1px red solid;
 }
 
-label {
-  border: 1px yellow solid;
+.user-login-form label {
+  color: #999999;
   display: flex;
+  gap: 10px;
   justify-content: space-between;
+}
+
+.user-login-form input {
+  background-color: #999999;
+}
+
+.user-login-form button {
+  background-color: #6C56CC;
+  color: #f8f8f8;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  align-self: center;
+  margin-top: 10px;
 }

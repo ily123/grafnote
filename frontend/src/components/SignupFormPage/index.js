@@ -36,6 +36,7 @@ function SignupFormPage () {
 
   const submit = async (event) => {
     event.preventDefault();
+    console.log('hello');
     try {
       await dispatch(signupUser(email, username, password));
       console.warn('thunk was successful');
@@ -77,7 +78,7 @@ function SignupFormPage () {
         </label>
         <label> Password
           <input
-            type="text"
+            type="password"
             value={password}
             placeholder="Enter password"
             onChange={(e) => setPassword(e.target.value)}
@@ -86,7 +87,7 @@ function SignupFormPage () {
         </label>
         <label> Confirm Password
           <input
-            type="text"
+            type="password"
             value={confirmPassword}
             placeholder="Confirm password"
             onChange={(e) => setConfirmPassword(e.target.value)}
