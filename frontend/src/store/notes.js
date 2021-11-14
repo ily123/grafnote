@@ -30,7 +30,6 @@ export const destroyNote = id => {
   };
 };
 
-export const patchNote = (id, title, content) => {};
 export const setActiveNoteId = id => {
   return {
     type: SET_ACTIVE_NOTE,
@@ -85,6 +84,7 @@ export const fetchNotesAndNotebooks = () => async dispatch => {
   const response = await csrfFetch('/api/note');
   if (response.ok) {
     const { notes } = await response.json();
+    console.log('this is notes', notes);
     dispatch(loadNotes(notes));
   }
 
@@ -124,6 +124,8 @@ export const deleteNote = id => async dispatch => {
 };
 
 export const editNote = (id, title, content, folderId) => async dispatch => {
+  console.log('this is the id of editNOTE', id);
+  if (!id) return null;
   const options = {
     method: 'PATCH',
     body: JSON.stringify({ title, content, folderId })
@@ -189,11 +191,16 @@ export const notesReducer = (state = initialState, action) => {
     case SET_ACTIVE_NOTE: {
       if (action.id) {
         return { ...state, activeNoteId: action.id };
+      } else if (!Object.keys(state.notes).length) {
+        return state;
       } else {
         // this will break if there are no notes left TODO
         const firstNoteId = Object.keys(state.notes)[0];
         return { ...state, activeNoteId: firstNoteId };
       }
+    }
+    case 'user/DESTROY': {
+      return initialState;
     }
     default: {
       return state;

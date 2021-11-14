@@ -13,7 +13,7 @@ export default function Navigation () {
         {user
           ? (
             <>
-              <li><NavLink to='/test'>Notes FIRST FEATURE</NavLink></li>
+              <li><NavLink to='/notes'>Your Notes</NavLink></li>
               <li><ProfileButton user={user}/></li>
             </>)
           : (
