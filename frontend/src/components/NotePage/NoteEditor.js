@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { editNote, deleteNote } from '../../store/notes';
 
 function TextEntryArea ({ readonly, content, setContent }) {
-  console.log(readonly);
   return (
     <textarea
       readOnly={readonly}
@@ -17,12 +16,17 @@ function TextEntryArea ({ readonly, content, setContent }) {
   );
 }
 
+// function PreviewArea ({}) {
+//  return <></>;
+// }
+
 export default function NoteEditor ({ notes, folders }) {
   const dispatch = useDispatch();
   const activeNoteId = useSelector(state => state.notes.activeNoteId);
   const [content, setContent] = useState('Create a new note :)');
   const [title, setTitle] = useState('Create a new note!');
   const [selectedFolder, setSelectedFolder] = useState(0);
+  const [edit, setEdit] = useState(false);
   const timeout = useRef();
 
   useEffect(() => {
@@ -60,23 +64,37 @@ export default function NoteEditor ({ notes, folders }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <select
-          value={selectedFolder}
-          onChange={(e) => setSelectedFolder(e.target.value)}
-        >
-          <option value="0">No Folder</option>
-          {(Object.entries(folders).map(([id, folder]) => {
-            return <option key={id} value={id}>{folder.title}</option>;
-          }))};
-        </select>
-        <i className="far fa-trash-alt"
-          onClick={() => deleteActiveNote()}
-        ></i>
+        <div className="editor-note-controls">
+          <div className="folderSelect">
+            <div>move to</div>
+            <select
+              value={selectedFolder}
+              onChange={(e) => setSelectedFolder(e.target.value)}
+            >
+              <option value="0">No Folder</option>
+              {(Object.entries(folders).map(([id, folder]) => {
+                return <option key={id} value={id}>{folder.title}</option>;
+              }))};
+            </select>
+          </div>
+          <div
+            onClick={() => setEdit(state => !state)}
+            className={`readToggle ${edit ? 'editing' : 'reading'}`}
+          >
+            {edit
+              ? (<><i className="fas fa-circle"></i><div>editing</div></>)
+              : (<><i className="far fa-circle"></i><div>reading</div></>)
+            }
+          </div>
+          <i className="far fa-trash-alt"
+            onClick={() => deleteActiveNote()}
+          ></i>
+        </div>
       </div>
-      <TextEntryArea readonly={!activeNoteId} content={content} setContent={setContent}/>
-      <div>Mardown preview below is an extra feature, and work in progress.</div>
-      <ReactMarkdown className='note-markdown-preview'>{content}</ReactMarkdown>
-
+      {(edit
+        ? (<TextEntryArea readonly={!activeNoteId} content={content} setContent={setContent}/>)
+        : (<ReactMarkdown className='note-markdown-preview'>{content}</ReactMarkdown>)
+      )}
     </div>
   );
 }

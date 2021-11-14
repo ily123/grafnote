@@ -11,31 +11,31 @@
 }
 
 
-.note-header-container i {
-  font-size: 20px;
-  color: #999999;
-}
-
-.note-header-container i:hover {
-  cursor: pointer;
-  color: red;
-}
 .note-header-container {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 5px;
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.1);*/
+  padding-bottom: 5px;
 }
 
 .note-container textarea {
   height: 100%;
   resize: none;
   border: none;
+  padding: 15px;
+  padding-left: 20px;
 }
 
 .note-container textarea:focus, input:focus{
     outline: none;
 }
 
+input.note-title{
+  padding-left: 20px;
+  flex-basis: 30%;
+}
 input.note-title:focus {
   color: #6C56CC;
 }
@@ -44,4 +44,69 @@ input.note-title:focus {
   color: #DCDDDE;
   background-color: #161616;
   border: none;
+}
+
+.readToggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  flex-basis: 20%;
+}
+.readToggle:hover{
+  cursor: pointer;
+}
+.editing, .editing i.fas {
+  color: red;
+}
+
+.reading, .reading i.far {
+  color: green;
+}
+
+.folderSelect {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  gap: 5px;
+  flex-basis: 40%;
+}
+
+.folderSelect select {
+  background-color: #999999;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+.editor-note-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3%;
+  flex-basis: 100%;
+}
+.editor-note-controls i {
+  font-size: 20px;
+  color: #999999;
+}
+.editor-note-controls i.fa-trash-alt:hover {
+  cursor: pointer;
+  color: red;
+}
+@media (min-width: 800px) {
+  .folderSelect > div {
+    display: inline-block;
+  }
+  .note-header-container {
+    flex-direction: row;
+  }
+  .editor-note-controls {
+    justify-content: flex-end;
+  }
+  .folderSelect {
+    flex-basis: 70%;
+    justify-content: flex-end;
+  }
 }
