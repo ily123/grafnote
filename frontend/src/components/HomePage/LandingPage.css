@@ -1,5 +1,4 @@
 .landing-page {
-  font-family: Inter, sans-serif;
   width: 100%;
 }
 
@@ -7,17 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 30px;
   padding-bottom: 70px;
-}
-
-.hero-text h1 {
-  font-size: 50px;
-  color: #f8f8f8;
-}
-
-.hero-text p {
-  font-size: 24px;
-  color: #999;
 }
 
 .hero-text {
@@ -30,9 +20,12 @@
   background-image: url('./endless-constellation.svg');
 }
 
+
+
 .hero-text p b {
   color: #6C56CC;
 }
+
 
 .hero-demo-login:hover {
   background-color: #4e3c9e;
@@ -45,6 +38,7 @@
   border-radius: 5px;
   height: 65px;
   width: clamp(250px, 38%, 350px);
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
@@ -118,22 +112,58 @@
 }
 
 .features-container h2 {
-  font-size: 50px;
+  font-size: 2rem;
   color: #DCDDDE;
   margin: 0;
   padding-bottom: 30px;
 }
 
 .features-container ul {
+  padding: 0 40px;
   list-style-type: none;
 }
 .features-container li {
   color: #999999;
-  font-size: 24px;
+  font-size: 1.2rem;
   padding-bottom: 20px;
 }
 
 .features-container li span {
   font-weight: bold;
   color: #DCDDDE;
+}
+
+
+.hero-text h1 {
+  font-size: 2.5rem;
+}
+.hero-text p {
+  font-size: 1.2rem;
+  color: #999;
+}
+
+/* Play around with media queries */
+@media (min-width: 250px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 600px) {
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+  .hero-text p {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1000px) {
+  .hero-text h1 {
+    font-size: 3.5rem;
+  }
+  .features-container h2 {
+    font-size: 3rem;
+  }
+  .features-container li {
+    font-size: 1.5rem;
+  }
 }

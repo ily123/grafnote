@@ -1,20 +1,27 @@
 import './Navigation.css';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../../store/session';
 
 export default function Navigation () {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.session);
   return (
     <header>
-      <div className='logo'><NavLink to='/'>G R A F N O T E</NavLink></div>
+      <NavLink className='logo-wrapper' to='/'>
+        <div className='icons8-jewel'></div>
+        <div className='logo'>G R A F N O T E</div>
+      </NavLink>
       <ul className="navigation-container">
-        <li><NavLink to='/'>Home</NavLink></li>
         {user
           ? (
             <>
-              <li><NavLink to='/notes'>Your Notes</NavLink></li>
-              <li><ProfileButton user={user}/></li>
+              <li><NavLink to='/notes'>
+                <i className="fas fa-sticky-note"></i> Notes</NavLink>
+              </li>
+              <li onClick={() => dispatch(logoutUser())}>
+                <i className="fas fa-sign-out-alt"/> {`Log out (${user.email})`}
+              </li>
             </>)
           : (
             <>
