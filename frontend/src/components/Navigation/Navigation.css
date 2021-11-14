@@ -4,7 +4,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
   margin-bottom: 80px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
@@ -22,7 +22,6 @@ header a:hover {
 }
 
 header .logo {
-  padding-left: 50px;
   font-size: 20px;
   font-family: Inter, sans-serif;
 }
@@ -41,3 +40,31 @@ header .logo {
 .navigation-container li {
   list-style-type: none;
 }
+
+.logo-wrapper {
+  padding-left: 50px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .logo {
+    display: block;
+  }
+}
+
+
+
+/* logo SVG */
+.icons8-jewel {
+width: 32px;
+height: 32px;
+background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIKdmlld0JveD0iMCAwIDE3MiAxNzIiCnN0eWxlPSIgZmlsbDojMDAwMDAwOyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTAsMTcydi0xNzJoMTcydjE3MnoiIGZpbGw9Im5vbmUiPjwvcGF0aD48Zz48cGF0aCBkPSJNMTM5Ljc1LDIxLjVoLTU3LjMzMzMzbC02MC45MTY2Nyw2MC45MTY2N3Y1Ny4zMzMzM2wxMjksMTAuNzV6IiBmaWxsPSIjN2E2NmM1Ij48L3BhdGg+PHBhdGggZD0iTTUzLjc1LDEwNy41bC0zMi4yNSwzMi4yNWwxMjksMTAuNzV6IiBmaWxsPSIjNGEzN2EwIj48L3BhdGg+PHBhdGggZD0iTTEzOS43NSwyMS41bC0zMi4yNSwzMi4yNWwtMjUuMDgzMzMsLTMyLjI1eiIgZmlsbD0iIzRhMzdhMCI+PC9wYXRoPjxwYXRoIGQ9Ik01My43NSwxMDcuNWwtMzIuMjUsLTI1LjA4MzMzbDYwLjkxNjY3LC02MC45MTY2N2wyNS4wODMzMywzMi4yNWw0Myw5Ni43NXoiIGZpbGw9IiM5NzgxZTEiPjwvcGF0aD48cGF0aCBkPSJNMTM5Ljc1LDIxLjVsLTMyLjI1LDMyLjI1bDQzLDk2Ljc1ek0xMDcuNSw1My43NWgtNTcuMzMzMzNsMy41ODMzMyw1My43NXoiIGZpbGw9IiM3YjYyYzciPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==') 50% 50% no-repeat;
+background-size: 100%; }

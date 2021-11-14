@@ -7,9 +7,11 @@ export default function Navigation () {
   const user = useSelector(state => state.session);
   return (
     <header>
-      <div className='logo'><NavLink to='/'>G R A F N O T E</NavLink></div>
+      <NavLink className='logo-wrapper' to='/'>
+        <div className='icons8-jewel'></div>
+        <div className='logo'>G R A F N O T E</div>
+      </NavLink>
       <ul className="navigation-container">
-        <li><NavLink to='/'>Home</NavLink></li>
         {user
           ? (
             <>
