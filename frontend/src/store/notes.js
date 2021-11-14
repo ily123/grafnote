@@ -157,8 +157,14 @@ export const notesReducer = (state = initialState, action) => {
     }
     case DESTROY_FOLDER: {
       const folders = { ...state.folders };
+      const notes = { ...state.notes };
+      Object.values(notes).forEach(note => {
+        if (action.id === note.folderId) {
+          delete notes[note.id];
+        }
+      });
       delete folders[action.id];
-      return { ...state, folders };
+      return { ...state, folders, notes };
     }
     case LOAD_NOTES: {
       const notes = {};
