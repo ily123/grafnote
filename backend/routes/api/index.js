@@ -9,6 +9,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.j
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+router.use(requireAuth);
 // attach Notes routes to the API router
 const notesRouter = require('./note.js');
 router.use('/note', notesRouter);
@@ -48,7 +49,6 @@ const validateSignup = [
 
 router.post('/login', validateLogin, asyncHandler(async (req, res, next) => {
   const { credential, password } = req.body;
-  console.log(credential);
   const user = await User.login({ credential, password });
   if (!user) {
     const err = new Error('Login failed');
@@ -79,26 +79,5 @@ router.get('/session', restoreUser, (req, res) => {
   if (!user) return res.json({});
   return res.json({ user: user.toSafeObject() });
 });
-// TODO -- these need to be made into actual unit tests:
-
-router.get('/test', (req, res) => {
-  res.json({ message: 'this is a test' });
-});
-
-router.get('/test-set-token', asyncHandler(async (req, res) => {
-  const user = await User.findOne({
-    where: { username: 'Demo-lition' }
-  });
-  setTokenCookie(res, user);
-  return res.json({ user });
-}));
-
-router.get('/test-restore-user', restoreUser, asyncHandler(async (req, res) => {
-  return res.json(req.user);
-}));
-
-router.get('/test-require-auth', requireAuth, asyncHandler(async (req, res) => {
-  return res.json(req.user);
-}));
 
 module.exports = router;
