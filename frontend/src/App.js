@@ -32,8 +32,11 @@ function App () {
           This is the signup page.
           <SignupFormPage />
         </Route>
-        <Route path="/test">
+        <Route path="/notes">
           <NotePage />
+        </Route>
+        <Route>
+          <h1>this page does not exist</h1>
         </Route>
       </Switch>
     </div>
