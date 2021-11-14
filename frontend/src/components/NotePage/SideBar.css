@@ -72,3 +72,37 @@
   color: #6C56CC;
   cursor: pointer;
 }
+
+.readToggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  flex-basis: 20%;
+}
+.readToggle:hover{
+  cursor: pointer;
+}
+.editing, .editing i.fas {
+  color: red;
+}
+
+.reading, .reading i.far {
+  color: green;
+}
+
+.folderSelect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  gap: 5px;
+  flex-basis: 30%;
+}
+
+.folderSelect select {
+  background-color: #999999;
+  font-size: 1rem;
+  border-radius: 3px;
+}
