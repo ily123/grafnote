@@ -123,5 +123,4 @@ function FolderLink ({ type, payload }) {
 ![Main note display (edit mode)](http://i.imgur.com/nerKc1D.png)
 
 - Note navigation sidebar
-<br>
-![Note navigation sidebar](http://i.imgur.com/4RvPA14.png)
+![Note navigation sidebar](http://i.imgur.com/EasDFg6.png)
