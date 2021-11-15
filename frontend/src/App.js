@@ -29,7 +29,6 @@ function App () {
           <LoginFormPage />
         </Route>
         <Route path="/signup">
-          This is the signup page.
           <SignupFormPage />
         </Route>
         <Route path="/notes">

@@ -1,11 +1,53 @@
+.user-signup-errors li{
+  color: red;
+  list-style: none;
+}
+
 .user-signup-form {
-  border: 1px red solid;
+  display: flex;
+  flex-direction: column;
+  color: #999999;
 }
 
-.user-signup-form .input.valid {
-  background-color: lightgreen;
+.user-signup-form input {
+  background-color: #999999;
 }
 
-.user-signup-form .input.invalid {
-  background-color: pink;
+.user-signup-form button {
+  background-color: #6C56CC;
+  color: #f8f8f8;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  align-self: center;
+  margin-top: 10px;
+}
+.user-signup-form button:hover {
+  cursor: pointer;
+  background-color: #7B62C7;
+}
+
+.user-signup-form .invalid{
+  list-style: none;
+  color: red;
+}
+.user-signup-form .valid{
+  list-style: none;
+  color: green;
+}
+
+.user-signup-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.user-signup-form label {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.user-signup-form form input {
+  border: none;
 }
