@@ -5,6 +5,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { User, Note } = require('../../db/models');
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
+const { README } = require('../../db/utils');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -81,8 +82,8 @@ router.post('/signup', validateSignup, async (req, res, next) => {
   // create a welcome note as the 1st note for new user
   await Note.create({
     userId: user.id,
-    title: 'Welcome!',
-    content: 'This is your first note!'
+    title: 'README.md',
+    content: README
   });
   await setTokenCookie(res, user);
   return res.json({ user });

@@ -31,7 +31,6 @@ export default function NoteEditor ({ notes, folders }) {
 
   useEffect(() => {
     if (activeNoteId) {
-      console.log('useEffect', activeNoteId);
       const note = notes[activeNoteId];
       setContent(note.content);
       setTitle(note.title);
@@ -40,7 +39,6 @@ export default function NoteEditor ({ notes, folders }) {
   }, [activeNoteId]);
 
   useEffect(() => {
-    console.log('text area change trigger');
     clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
       dispatch(editNote(activeNoteId, title, content, selectedFolder));
@@ -48,7 +46,6 @@ export default function NoteEditor ({ notes, folders }) {
   }, [content, title]);
 
   useEffect(() => {
-    console.log('select folder trigger');
     dispatch(editNote(activeNoteId, title, content, selectedFolder));
   }, [selectedFolder]);
   const deleteActiveNote = () => {

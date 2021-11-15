@@ -23,12 +23,16 @@
   color: #6C56CC;
 }
 
+.note-top-link {
+  padding-top: 10px;
+}
 .note-top-link:hover {
   cursor: pointer;
   color: #6C56CC;
 }
 
 .folder-link {
+  padding-top: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;

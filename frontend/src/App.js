@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
@@ -10,8 +10,6 @@ import NotePage from './components/NotePage';
 import { restoreUser } from './store/session';
 
 function App () {
-  const user = useSelector(state => state.session);
-  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
