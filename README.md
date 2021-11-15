@@ -1,5 +1,5 @@
 <p align="center" alt="Logo of grafnote (purple crystal)">
-  <img src="http://i.imgur.com/OOCykA5.png" />
+  <img src="http://i.imgur.com/eXCFVIE.png" />
 </p>
 <div align="center">
   <img src="https://img.shields.io/badge/-React-blue" alt="React badge"/>
