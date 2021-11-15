@@ -30,11 +30,8 @@ if (process.env.NODE_ENV === 'production') {
   });
 } else {
   router.get('/api/csrf/restore', (req, res) => {
-    console.log('this route got hit | Setting Cookies For Dev Env');
-    console.log('CSRF cookies on the incoming request:', req.cookies);
     const csrfToken = req.csrfToken();
     res.cookie('XSRF-TOKEN', csrfToken);
-    console.log('CSRF cookies on the response:', res._headers['set-cookie']);
     return res.json({ msg: 'this is a test' });
   });
 }

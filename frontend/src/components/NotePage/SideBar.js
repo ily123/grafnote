@@ -18,7 +18,6 @@ function FolderLink ({ type, payload }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(payload.title);
   const [readOnly, setReadOnly] = useState(true);
-  console.log(title);
   if (!payload || !type) return null;
 
   const sendNewTitle = () => {
@@ -89,24 +88,19 @@ function FileTree ({ notes, folders, setActiveNoteId }) {
 export default function SideBar ({ notes, folders }) {
   const dispatch = useDispatch();
   const firstNoteId = Object.keys(notes)[0];
-  console.log(folders);
   useEffect(() => {
     dispatch(setActiveNoteId(firstNoteId));
   }, [dispatch]);
 
   const newNote = async () => {
-    console.log('create new notes...');
     const response = dispatch(createNote('Untitled', ''));
-    console.log(response);
     if (response.ok) {
       // dispatch(setActiveNoteId());
     }
   };
 
   const newFolder = async () => {
-    console.log('create new folder...');
     const response = dispatch(createFolder('New Folder'));
-    console.log(response);
     if (response.ok) {
       // dispatch(setActiveNoteId());
     }

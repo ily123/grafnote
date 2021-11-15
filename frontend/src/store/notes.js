@@ -70,12 +70,9 @@ export const editFolderTitle = (id, title) => async dispatch => {
     method: 'PATCH',
     body: JSON.stringify({ title })
   };
-  console.log('thunk -->', id);
-  console.log('thunk -->', title);
   const response = await csrfFetch(`api/folder/${id}`, options);
   if (response.ok) {
     const { folder } = await response.json();
-    console.log('this is thunk reponse folder', folder);
     dispatch({ type: ADD_FOLDER, folder });
   }
 };
@@ -84,7 +81,6 @@ export const fetchNotesAndNotebooks = () => async dispatch => {
   const response = await csrfFetch('/api/note');
   if (response.ok) {
     const { notes } = await response.json();
-    console.log('this is notes', notes);
     dispatch(loadNotes(notes));
   }
 
@@ -93,7 +89,6 @@ export const fetchNotesAndNotebooks = () => async dispatch => {
   const response2 = await csrfFetch('/api/folder');
   if (response2.ok) {
     const { folders } = await response2.json();
-    console.log(folders);
     dispatch(loadFolders(folders));
   }
   return response;
@@ -124,7 +119,6 @@ export const deleteNote = id => async dispatch => {
 };
 
 export const editNote = (id, title, content, folderId) => async dispatch => {
-  console.log('this is the id of editNOTE', id);
   if (!id) return null;
   const options = {
     method: 'PATCH',
