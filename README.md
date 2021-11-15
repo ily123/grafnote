@@ -1,10 +1,23 @@
-![Logo of grafnote purple crystal](http://i.imgur.com/jFFLBTC.png)
-![react](https://img.shields.io/badge/-React-blue) ![Express](https://img.shields.io/badge/-Express-blue) ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-blue) ![PostgreSQL](https://img.shields.io/badge/style-standard-blue)
+<p align="center" alt="Logo of grafnote (purple crystal)">
+  <img src="http://i.imgur.com/OOCykA5.png" />
+</p>
+<div align="center">
+  <img src="https://img.shields.io/badge/-React-blue" alt="React badge"/>
+   <img src="https://img.shields.io/badge/-Express-blue" alt="Express badge"/>
+  <img src="https://img.shields.io/badge/-PostgreSQL-blue" alt="PSQL badge"/>
+  <img src="https://img.shields.io/badge/Heroku-blue" alt="Heroku badge"/>
+   <img src="https://img.shields.io/badge/style-standard-blue" alt="React badge"/>
 
+</div>
+<br>
+<div align="center">
+<a href="https://grafnote.herokuapp.com/">
+  <img src="https://img.shields.io/badge/live_website-red?style=for-the-badge" alt="Grafnote link"/>
+<a>
+</div>
 
-This website is a MVP clone of [evernote.com](https://evernote.com), with [Obsidian](https://obsidian.md/)-inspired styling & layout.
+This website is a MVP clone of [evernote.com](https://evernote.com), with [Obsidian](https://obsidian.md/)-inspired styling & layout. Live website can be found [here](https://grafnote.herokuapp.com/).
 
- [Live website](https://grafnote.herokuapp.com/)
 
 # Main features
 
