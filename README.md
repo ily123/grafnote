@@ -124,3 +124,11 @@ function FolderLink ({ type, payload }) {
 
 - Note navigation sidebar
 ![Note navigation sidebar](http://i.imgur.com/EasDFg6.png)
+
+# Contributors
+
+- Ilya Novikov
+
+# Licence
+
+Unlicense (https://en.wikipedia.org/wiki/Unlicense).
