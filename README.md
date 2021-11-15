@@ -16,7 +16,7 @@
 <a>
 </div>
 
-This website is a MVP clone of [evernote.com](https://evernote.com), with [Obsidian](https://obsidian.md/)-inspired styling & layout. Live website can be found [here](https://grafnote.herokuapp.com/).
+This website is a MVP clone of [evernote.com](https://evernote.com), with [Obsidian](https://obsidian.md/)-inspired styling & layout. Live website is [here](https://grafnote.herokuapp.com/).
 
 
 # Main features
