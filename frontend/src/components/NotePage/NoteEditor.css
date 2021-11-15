@@ -20,7 +20,7 @@
   padding-bottom: 5px;
 }
 
-.note-container textarea {
+.note-container textarea, .note-container .note-markdown-preview {
   height: 100%;
   resize: none;
   border: none;
