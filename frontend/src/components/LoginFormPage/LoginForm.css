@@ -1,3 +1,7 @@
+.user-login-errors{
+  color: red;
+  list-style: none;
+}
 .user-login-form form {
   display: flex;
   flex-direction: column;

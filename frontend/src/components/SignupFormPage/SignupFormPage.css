@@ -1,3 +1,8 @@
+.user-signup-errors li{
+  color: red;
+  list-style: none;
+}
+
 .user-signup-form {
   display: flex;
   flex-direction: column;

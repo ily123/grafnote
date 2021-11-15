@@ -11,6 +11,7 @@ function SignupFormPage () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState(null);// backend errors
   const [valid, setValid] = useState({
     email: false,
     username: false,
@@ -36,13 +37,11 @@ function SignupFormPage () {
 
   const submit = async (event) => {
     event.preventDefault();
-    console.log('hello');
     try {
       await dispatch(signupUser(email, username, password));
-      console.warn('thunk was successful');
     } catch (response) {
       const { errors } = await response.json();
-      console.error(errors);
+      setErrors(errors);
     }
   };
 
@@ -96,6 +95,9 @@ function SignupFormPage () {
         </label>
         <button type="submit">Submit</button>
       </form>
+      <ul className="user-signup-errors">
+        {errors?.map(errorMsg => <li key={errorMsg}>{errorMsg}</li>)}
+      </ul>
     </div>
   );
 };

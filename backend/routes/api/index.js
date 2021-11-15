@@ -66,9 +66,18 @@ router.delete('/logout', (req, res) => {
   return res.json({ message: 'success' });
 });
 
-router.post('/signup', validateSignup, async (req, res) => {
+router.post('/signup', validateSignup, async (req, res, next) => {
   const { email, password, username } = req.body;
-  const user = await User.signup({ email, username, password });
+  let user;
+  try {
+    user = await User.signup({ email, username, password });
+  } catch {
+    const err = new Error('Signup failed');
+    err.status = 401;
+    err.title = 'Signup failed';
+    err.errors = ['Provided name or email already exist.'];
+    return next(err);
+  }
   // create a welcome note as the 1st note for new user
   await Note.create({
     userId: user.id,
