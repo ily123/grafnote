@@ -5,9 +5,9 @@ import { loginUser } from '../../store/session';
 
 const endorsements = [
   {
-    text: <div>The password fields need to be type <b>password</b>.</div>,
-    person: 'Peter Mai',
-    title: 'AppAcademy Instructor'
+    text: <div>The <b>dark theme</b> and the color palette are nice.</div>,
+    person: 'Joe Doe',
+    title: 'AppAcademy Student'
   },
   {
     text: <div>I like the <b>dynamic validation</b> on the sign-up form.</div>,
