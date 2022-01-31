@@ -22,10 +22,6 @@ const README = `
   - Autosave of note title and note content
     - as the user types the content is automatically patched (with 1 sec debounce)
 
-
-  Feature not implemented (maybe in the future):
-  - d3 visualizion of node connections (a graph!)
-  - tokenized (ts-vector) search of note content
 `;
 
 module.exports = { README };
