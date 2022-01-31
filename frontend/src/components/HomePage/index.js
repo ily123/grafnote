@@ -5,9 +5,9 @@ import { loginUser } from '../../store/session';
 
 const endorsements = [
   {
-    text: <div>The password fields need to be type <b>password</b>.</div>,
-    person: 'Peter Mai',
-    title: 'AppAcademy Instructor'
+    text: <div>The <b>dark theme</b> and the color palette are nice.</div>,
+    person: 'Joe Doe',
+    title: 'AppAcademy Student'
   },
   {
     text: <div>I like the <b>dynamic validation</b> on the sign-up form.</div>,
@@ -62,9 +62,9 @@ export default function LandingPage () {
         <ul>
           <li>Text entry is <span>Markdown</span> by default, with live preview</li>
           <li><span>Intuitive</span> folder structure and browser</li>
-          <li>All notes can be connected to create a <span>personal network of knowledge</span></li>
-          <li><span>Graph view</span> of note connections to map out your notes</li>
-          <li>Easy export of all contents as <span>zip-archive of .md files</span></li>
+          <li>Add an <span>unlimited number</span> of notes and folders</li>
+          <li>[coming soon] <span>Graph view</span> of note connections to map out your notes</li>
+          <li>[coming soon] Easy export of all contents as <span>zip-archive of .md files</span></li>
         </ul>
       </div>
     </div>
